@@ -1,24 +1,29 @@
 package me.storm.ninegag.model;
 
+import android.database.Cursor;
 import android.media.Image;
 
 /**
  * Created by storm on 14-3-25.
  */
 public class Section extends BaseModel {
-    private String id;
-    private String caption;
-    private String link;
-    private Image images;
-    private Vote votes;
+    public String id;
+    public String caption;
+    public String link;
+    public Image images;
+    public Vote votes;
 
-    private class Image {
-        private String small;
-        private String normal;
-        private String large;
+    public class Image {
+        public String small;
+        public String normal;
+        public String large;
     }
 
     private class Vote {
-        private int count;
+        public int count;
+    }
+
+    public static Section fromCursor(Cursor cursor) {
+        return null;
     }
 }
