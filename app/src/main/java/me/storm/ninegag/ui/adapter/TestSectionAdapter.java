@@ -2,48 +2,43 @@ package me.storm.ninegag.ui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CursorAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 
 import java.util.ArrayList;
 
+import me.storm.ninegag.R;
 import me.storm.ninegag.data.RequestManager;
 import me.storm.ninegag.model.Section;
-import me.storm.ninegag.R;
 
 /**
- * Created by storm on 14-3-26.
+ * Created by storm on 14-3-28.
  */
-public class SectionAdapter extends CursorAdapter {
-    private LayoutInflater mLayoutInflater;
-
-    private ListView mListView;
-
-    private Drawable mDefaultImageDrawable = new ColorDrawable(Color.argb(255, 201, 201, 201));
+public class TestSectionAdapter extends BaseAdapter {
+    private Context mContext;
 
     private ArrayList<Section> mSections;
 
-    public SectionAdapter(Context context, ListView listView) {
-        super(context, null, false);
-        mLayoutInflater = ((Activity) context).getLayoutInflater();
-        mListView = listView;
+    private Drawable mDefaultImageDrawable = new ColorDrawable(Color.argb(255, 201, 201, 201));
+
+    public TestSectionAdapter(Context context, ArrayList<Section> sections) {
+        this.mContext = context;
+        this.mSections = sections;
     }
 
-    public SectionAdapter(Context context, ArrayList<Section> sections) {
-        super(context, null, false);
-        mLayoutInflater = ((Activity) context).getLayoutInflater();
-        this.mSections = sections;
+    @Override
+    public int getCount() {
+        if (mSections != null)
+            return mSections.size();
+        return 0;
     }
 
     @Override
@@ -52,25 +47,19 @@ public class SectionAdapter extends CursorAdapter {
     }
 
     @Override
-    public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
-        return mLayoutInflater.inflate(R.layout.listitem_section, null);
+    public long getItemId(int position) {
+        return 0;
     }
 
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
-        Holder holder = getHolder(view);
-        if (holder.imageRequest != null) {
-            holder.imageRequest.cancelRequest();
-        }
-
-        view.setEnabled(!mListView.isItemChecked(cursor.getPosition()
-                + mListView.getHeaderViewsCount()));
-
-//        Section section = Section.fromCursor(cursor);
-        Section section = getItem(cursor.getPosition());
+    public View getView(int position, View convertView, ViewGroup parent) {
+        convertView = View.inflate(mContext, R.layout.listitem_section, null);
+        Holder holder = getHolder(convertView);
+        Section section = getItem(position);
         holder.imageRequest = RequestManager.loadImage(section.images.normal, RequestManager
                 .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable));
         holder.caption.setText(section.caption);
+        return convertView;
     }
 
     private Holder getHolder(final View view) {

@@ -16,7 +16,6 @@
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:paddingTop="3dip"
-        android:paddingBottom="3dip"
-        android:background="@drawable/listitem_drawer_selector" />
+        android:paddingBottom="3dip" />
 
 </FrameLayout>

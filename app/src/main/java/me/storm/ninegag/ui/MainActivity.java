@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 
 import me.storm.ninegag.R;
 import me.storm.ninegag.model.Category;
+import me.storm.ninegag.ui.fragment.BaseFragment;
 import me.storm.ninegag.ui.fragment.DrawerFragment;
 import me.storm.ninegag.ui.fragment.SectionFragment;
 
@@ -26,12 +27,17 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         findViews();
-        setCategory(Category.hot);
+//        setCategory(Category.hot);
         replaceFragment(R.id.left_drawer, new DrawerFragment());
     }
 
     private void findViews() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    }
+
+    protected void replaceFragment(int viewId, BaseFragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(viewId, fragment).commit();
     }
 
     public void setCategory(Category category) {

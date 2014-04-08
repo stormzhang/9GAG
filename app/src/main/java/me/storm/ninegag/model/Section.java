@@ -3,6 +3,8 @@ package me.storm.ninegag.model;
 import android.database.Cursor;
 import android.media.Image;
 
+import java.util.ArrayList;
+
 /**
  * Created by storm on 14-3-25.
  */
@@ -25,5 +27,9 @@ public class Section extends BaseModel {
 
     public static Section fromCursor(Cursor cursor) {
         return null;
+    }
+
+    public static class SectionRequestData {
+        public ArrayList<Section> data;
     }
 }
