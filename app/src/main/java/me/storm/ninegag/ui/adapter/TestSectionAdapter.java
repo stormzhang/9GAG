@@ -1,6 +1,5 @@
 package me.storm.ninegag.ui.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 
 import me.storm.ninegag.R;
 import me.storm.ninegag.data.RequestManager;
-import me.storm.ninegag.model.Section;
+import me.storm.ninegag.model.Feed;
 
 /**
  * Created by storm on 14-3-28.
@@ -25,11 +24,11 @@ import me.storm.ninegag.model.Section;
 public class TestSectionAdapter extends BaseAdapter {
     private Context mContext;
 
-    private ArrayList<Section> mSections;
+    private ArrayList<Feed> mSections;
 
     private Drawable mDefaultImageDrawable = new ColorDrawable(Color.argb(255, 201, 201, 201));
 
-    public TestSectionAdapter(Context context, ArrayList<Section> sections) {
+    public TestSectionAdapter(Context context, ArrayList<Feed> sections) {
         this.mContext = context;
         this.mSections = sections;
     }
@@ -42,7 +41,7 @@ public class TestSectionAdapter extends BaseAdapter {
     }
 
     @Override
-    public Section getItem(int position) {
+    public Feed getItem(int position) {
         return mSections.get(position);
     }
 
@@ -55,7 +54,7 @@ public class TestSectionAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = View.inflate(mContext, R.layout.listitem_section, null);
         Holder holder = getHolder(convertView);
-        Section section = getItem(position);
+        Feed section = getItem(position);
         holder.imageRequest = RequestManager.loadImage(section.images.normal, RequestManager
                 .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable));
         holder.caption.setText(section.caption);

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by storm on 14-3-25.
  */
-public class Section extends BaseModel {
+public class Feed extends BaseModel {
     public String id;
     public String caption;
     public String link;
@@ -25,11 +25,11 @@ public class Section extends BaseModel {
         public int count;
     }
 
-    public static Section fromCursor(Cursor cursor) {
+    public static Feed fromCursor(Cursor cursor) {
         return null;
     }
 
-    public static class SectionRequestData {
-        public ArrayList<Section> data;
+    public static class FeedRequestData {
+        public ArrayList<Feed> data;
     }
 }

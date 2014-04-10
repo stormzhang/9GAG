@@ -15,8 +15,7 @@ import me.storm.ninegag.R;
 import me.storm.ninegag.api.GagApi;
 import me.storm.ninegag.data.GsonRequest;
 import me.storm.ninegag.model.Category;
-import me.storm.ninegag.model.Section;
-import me.storm.ninegag.ui.adapter.SectionAdapter;
+import me.storm.ninegag.model.Feed;
 import me.storm.ninegag.ui.adapter.TestSectionAdapter;
 
 /**
@@ -54,13 +53,13 @@ public class SectionFragment extends BaseFragment {
     }
 
     private void loadData(final int page) {
-        executeRequest(new GsonRequest(String.format(GagApi.LIST, "hot", page), Section.SectionRequestData.class, responseListener(), errorListener()));
+        executeRequest(new GsonRequest(String.format(GagApi.LIST, "hot", page), Feed.FeedRequestData.class, responseListener(), errorListener()));
     }
 
-    private Response.Listener<Section.SectionRequestData> responseListener() {
-        return new Response.Listener<Section.SectionRequestData>() {
+    private Response.Listener<Feed.FeedRequestData> responseListener() {
+        return new Response.Listener<Feed.FeedRequestData>() {
             @Override
-            public void onResponse(Section.SectionRequestData response) {
+            public void onResponse(Feed.FeedRequestData response) {
                 Toast.makeText(App.getContext(), new Gson().toJson(response), Toast.LENGTH_LONG).show();
                 mAdapter = new TestSectionAdapter(getActivity(), response.data);
                 mListView.setAdapter(mAdapter);

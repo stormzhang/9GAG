@@ -18,9 +18,9 @@ import com.android.volley.toolbox.ImageLoader;
 
 import java.util.ArrayList;
 
-import me.storm.ninegag.data.RequestManager;
-import me.storm.ninegag.model.Section;
 import me.storm.ninegag.R;
+import me.storm.ninegag.data.RequestManager;
+import me.storm.ninegag.model.Feed;
 
 /**
  * Created by storm on 14-3-26.
@@ -32,7 +32,7 @@ public class SectionAdapter extends CursorAdapter {
 
     private Drawable mDefaultImageDrawable = new ColorDrawable(Color.argb(255, 201, 201, 201));
 
-    private ArrayList<Section> mSections;
+    private ArrayList<Feed> mFeeds;
 
     public SectionAdapter(Context context, ListView listView) {
         super(context, null, false);
@@ -40,15 +40,15 @@ public class SectionAdapter extends CursorAdapter {
         mListView = listView;
     }
 
-    public SectionAdapter(Context context, ArrayList<Section> sections) {
+    public SectionAdapter(Context context, ArrayList<Feed> feeds) {
         super(context, null, false);
         mLayoutInflater = ((Activity) context).getLayoutInflater();
-        this.mSections = sections;
+        this.mFeeds = feeds;
     }
 
     @Override
-    public Section getItem(int position) {
-        return mSections.get(position);
+    public Feed getItem(int position) {
+        return mFeeds.get(position);
     }
 
     @Override
@@ -67,10 +67,10 @@ public class SectionAdapter extends CursorAdapter {
                 + mListView.getHeaderViewsCount()));
 
 //        Section section = Section.fromCursor(cursor);
-        Section section = getItem(cursor.getPosition());
-        holder.imageRequest = RequestManager.loadImage(section.images.normal, RequestManager
+        Feed feed = getItem(cursor.getPosition());
+        holder.imageRequest = RequestManager.loadImage(feed.images.normal, RequestManager
                 .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable));
-        holder.caption.setText(section.caption);
+        holder.caption.setText(feed.caption);
     }
 
     private Holder getHolder(final View view) {
