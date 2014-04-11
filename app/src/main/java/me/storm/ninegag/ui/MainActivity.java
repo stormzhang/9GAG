@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import me.storm.ninegag.R;
 import me.storm.ninegag.model.Category;
 import me.storm.ninegag.ui.fragment.BaseFragment;
@@ -16,7 +18,8 @@ import me.storm.ninegag.ui.fragment.FeedsFragment;
  * Created by storm on 14-3-24.
  */
 public class MainActivity extends BaseActivity {
-    private DrawerLayout mDrawerLayout;
+    @InjectView(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
 
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -25,14 +28,10 @@ public class MainActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
 
-        findViews();
-//        setCategory(Category.hot);
+        setCategory(Category.hot);
         replaceFragment(R.id.left_drawer, new DrawerFragment());
-    }
-
-    private void findViews() {
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
 
     protected void replaceFragment(int viewId, BaseFragment fragment) {

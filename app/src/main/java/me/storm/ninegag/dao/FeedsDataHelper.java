@@ -22,13 +22,14 @@ import android.support.v4.content.CursorLoader;
 public class FeedsDataHelper extends BaseDataHelper {
     private Category mCategory;
 
-    public FeedsDataHelper(Context context) {
+    public FeedsDataHelper(Context context, Category category) {
         super(context);
+        mCategory = category;
     }
 
     @Override
     protected Uri getContentUri() {
-        return null;
+        return DataProvider.FEEDS_CONTENT_URI;
     }
 
     private ContentValues getContentValues(Feed feed) {

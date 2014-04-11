@@ -6,21 +6,22 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 
-import java.util.ArrayList;
-
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import me.storm.ninegag.R;
 import me.storm.ninegag.data.RequestManager;
 import me.storm.ninegag.model.Feed;
+
 
 /**
  * Created by storm on 14-3-26.
@@ -32,23 +33,16 @@ public class FeedsAdapter extends CursorAdapter {
 
     private Drawable mDefaultImageDrawable = new ColorDrawable(Color.argb(255, 201, 201, 201));
 
-    private ArrayList<Feed> mFeeds;
-
     public FeedsAdapter(Context context, ListView listView) {
         super(context, null, false);
         mLayoutInflater = ((Activity) context).getLayoutInflater();
         mListView = listView;
     }
 
-    public FeedsAdapter(Context context, ArrayList<Feed> feeds) {
-        super(context, null, false);
-        mLayoutInflater = ((Activity) context).getLayoutInflater();
-        this.mFeeds = feeds;
-    }
-
     @Override
     public Feed getItem(int position) {
-        return mFeeds.get(position);
+        mCursor.moveToPosition(position);
+        return Feed.fromCursor(mCursor);
     }
 
     @Override
@@ -66,8 +60,7 @@ public class FeedsAdapter extends CursorAdapter {
         view.setEnabled(!mListView.isItemChecked(cursor.getPosition()
                 + mListView.getHeaderViewsCount()));
 
-//        Section section = Section.fromCursor(cursor);
-        Feed feed = getItem(cursor.getPosition());
+        Feed feed = Feed.fromCursor(cursor);
         holder.imageRequest = RequestManager.loadImage(feed.images.normal, RequestManager
                 .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable));
         holder.caption.setText(feed.caption);
@@ -82,16 +75,17 @@ public class FeedsAdapter extends CursorAdapter {
         return holder;
     }
 
-    private class Holder {
-        public ImageView image;
+    static class Holder {
+        @InjectView(R.id.iv_normal)
+        ImageView image;
 
-        public TextView caption;
+        @InjectView(R.id.tv_caption)
+        TextView caption;
 
         public ImageLoader.ImageContainer imageRequest;
 
         public Holder(View view) {
-            image = (ImageView) view.findViewById(R.id.iv_normal);
-            caption = (TextView) view.findViewById(R.id.tv_caption);
+            ButterKnife.inject(this, view);
         }
     }
 }
