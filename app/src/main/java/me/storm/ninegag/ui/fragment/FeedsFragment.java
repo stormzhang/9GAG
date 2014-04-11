@@ -21,7 +21,7 @@ import me.storm.ninegag.ui.adapter.TestSectionAdapter;
 /**
  * Created by storm on 14-3-25.
  */
-public class SectionFragment extends BaseFragment {
+public class FeedsFragment extends BaseFragment {
     public static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
 
     private Category mCategory;
@@ -30,8 +30,8 @@ public class SectionFragment extends BaseFragment {
 
     private ListView mListView;
 
-    public static SectionFragment newInstance(Category category) {
-        SectionFragment fragment = new SectionFragment();
+    public static FeedsFragment newInstance(Category category) {
+        FeedsFragment fragment = new FeedsFragment();
         Bundle bundle = new Bundle();
         bundle.putString(EXTRA_CATEGORY, category.name());
         fragment.setArguments(bundle);

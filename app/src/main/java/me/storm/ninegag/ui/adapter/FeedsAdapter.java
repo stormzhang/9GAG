@@ -25,7 +25,7 @@ import me.storm.ninegag.model.Feed;
 /**
  * Created by storm on 14-3-26.
  */
-public class SectionAdapter extends CursorAdapter {
+public class FeedsAdapter extends CursorAdapter {
     private LayoutInflater mLayoutInflater;
 
     private ListView mListView;
@@ -34,13 +34,13 @@ public class SectionAdapter extends CursorAdapter {
 
     private ArrayList<Feed> mFeeds;
 
-    public SectionAdapter(Context context, ListView listView) {
+    public FeedsAdapter(Context context, ListView listView) {
         super(context, null, false);
         mLayoutInflater = ((Activity) context).getLayoutInflater();
         mListView = listView;
     }
 
-    public SectionAdapter(Context context, ArrayList<Feed> feeds) {
+    public FeedsAdapter(Context context, ArrayList<Feed> feeds) {
         super(context, null, false);
         mLayoutInflater = ((Activity) context).getLayoutInflater();
         this.mFeeds = feeds;

@@ -10,7 +10,7 @@ import me.storm.ninegag.R;
 import me.storm.ninegag.model.Category;
 import me.storm.ninegag.ui.fragment.BaseFragment;
 import me.storm.ninegag.ui.fragment.DrawerFragment;
-import me.storm.ninegag.ui.fragment.SectionFragment;
+import me.storm.ninegag.ui.fragment.FeedsFragment;
 
 /**
  * Created by storm on 14-3-24.
@@ -46,6 +46,6 @@ public class MainActivity extends BaseActivity {
             return;
         }
         mCategory = category;
-        replaceFragment(R.id.content_frame, SectionFragment.newInstance(category));
+        replaceFragment(R.id.content_frame, FeedsFragment.newInstance(category));
     }
 }
