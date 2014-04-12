@@ -59,5 +59,14 @@ public class Feed extends BaseModel {
 
     public static class FeedRequestData {
         public ArrayList<Feed> data;
+        public Paging paging;
+
+        public String getPage() {
+            return paging.next;
+        }
+    }
+
+    private class Paging {
+        public String next;
     }
 }

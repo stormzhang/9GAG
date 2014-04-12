@@ -19,7 +19,7 @@ import com.android.volley.toolbox.ImageLoader;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.storm.ninegag.R;
-import me.storm.ninegag.data.RequestManager;
+import me.storm.ninegag.data.ImageCacheManager;
 import me.storm.ninegag.model.Feed;
 
 
@@ -47,7 +47,7 @@ public class FeedsAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
-        return mLayoutInflater.inflate(R.layout.listitem_section, null);
+        return mLayoutInflater.inflate(R.layout.listitem_feed, null);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class FeedsAdapter extends CursorAdapter {
                 + mListView.getHeaderViewsCount()));
 
         Feed feed = Feed.fromCursor(cursor);
-        holder.imageRequest = RequestManager.loadImage(feed.images.normal, RequestManager
+        holder.imageRequest = ImageCacheManager.loadImage(feed.images.normal, ImageCacheManager
                 .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable));
         holder.caption.setText(feed.caption);
     }

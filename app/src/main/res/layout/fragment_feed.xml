@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="15dip"
+        android:drawSelectorOnTop="true"
+        android:headerDividersEnabled="true"
+        android:footerDividersEnabled="true"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollingCache="true"
+        android:smoothScrollbar="true" />
+</android.support.v4.widget.SwipeRefreshLayout>

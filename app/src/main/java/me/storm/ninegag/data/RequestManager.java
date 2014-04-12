@@ -21,13 +21,6 @@ import me.storm.ninegag.App;
 public class RequestManager {
     public static RequestQueue mRequestQueue = Volley.newRequestQueue(App.getContext());
 
-    // 取运行内存阈值的1/8作为图片缓存
-    private static final int MEM_CACHE_SIZE = 1024 * 1024 * ((ActivityManager) App.getContext()
-            .getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass() / 8;
-
-    private static ImageLoader mImageLoader = new ImageLoader(mRequestQueue, new BitmapLruCache(
-            MEM_CACHE_SIZE));
-
     private RequestManager() {
         // no instances
     }
@@ -41,49 +34,5 @@ public class RequestManager {
 
     public static void cancelAll(Object tag) {
         mRequestQueue.cancelAll(tag);
-    }
-
-    public static ImageLoader.ImageContainer loadImage(String requestUrl,
-                                                       ImageLoader.ImageListener imageListener) {
-        return loadImage(requestUrl, imageListener, 0, 0);
-    }
-
-    public static ImageLoader.ImageContainer loadImage(String requestUrl,
-                                                       ImageLoader.ImageListener imageListener, int maxWidth, int maxHeight) {
-        return mImageLoader.get(requestUrl, imageListener, maxWidth, maxHeight);
-    }
-
-    public static ImageLoader.ImageListener getImageListener(final ImageView view,
-                                                             final Drawable defaultImageDrawable, final Drawable errorImageDrawable) {
-        return new ImageLoader.ImageListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (errorImageDrawable != null) {
-                    view.setImageDrawable(errorImageDrawable);
-                }
-            }
-
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                if (response.getBitmap() != null) {
-                    if (!isImmediate && defaultImageDrawable != null) {
-                        TransitionDrawable transitionDrawable = new TransitionDrawable(
-                                new Drawable[]{
-                                        defaultImageDrawable,
-                                        new BitmapDrawable(App.getContext().getResources(),
-                                                response.getBitmap())
-                                }
-                        );
-                        transitionDrawable.setCrossFadeEnabled(true);
-                        view.setImageDrawable(transitionDrawable);
-                        transitionDrawable.startTransition(100);
-                    } else {
-                        view.setImageBitmap(response.getBitmap());
-                    }
-                } else if (defaultImageDrawable != null) {
-                    view.setImageDrawable(defaultImageDrawable);
-                }
-            }
-        };
     }
 }

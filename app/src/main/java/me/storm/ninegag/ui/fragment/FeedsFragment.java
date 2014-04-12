@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,24 +25,22 @@ import me.storm.ninegag.data.GsonRequest;
 import me.storm.ninegag.model.Category;
 import me.storm.ninegag.model.Feed;
 import me.storm.ninegag.ui.adapter.FeedsAdapter;
+import me.storm.ninegag.util.ListViewUtils;
 import me.storm.ninegag.util.TaskUtils;
 
 /**
  * Created by storm on 14-3-25.
  */
-public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor>, SwipeRefreshLayout.OnRefreshListener {
     public static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
-
-    private Category mCategory;
-
-    private FeedsDataHelper mDataHelper;
-
-    private FeedsAdapter mAdapter;
-
+    @InjectView(R.id.swipe_container)
+    SwipeRefreshLayout mSwipeLayout;
     @InjectView(R.id.listView)
     ListView mListView;
-
-    private int mPage = 0;
+    private Category mCategory;
+    private FeedsDataHelper mDataHelper;
+    private FeedsAdapter mAdapter;
+    private String mPage = "0";
 
     public static FeedsFragment newInstance(Category category) {
         FeedsFragment fragment = new FeedsFragment();
@@ -53,14 +52,24 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View contentView = inflater.inflate(R.layout.fragment_section, container, false);
+        View contentView = inflater.inflate(R.layout.fragment_feed, container, false);
         ButterKnife.inject(this, contentView);
 
         parseArgument();
         mDataHelper = new FeedsDataHelper(App.getContext(), mCategory);
         mAdapter = new FeedsAdapter(getActivity(), mListView);
         mListView.setAdapter(mAdapter);
+
+        mSwipeLayout.setOnRefreshListener(this);
+        mSwipeLayout.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
         getLoaderManager().initLoader(0, null, this);
+
+        mSwipeLayout.setRefreshing(true);
+        loadFirst();
         return contentView;
     }
 
@@ -69,8 +78,8 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         mCategory = Category.valueOf(bundle.getString(EXTRA_CATEGORY));
     }
 
-    private void loadData(final int page) {
-        executeRequest(new GsonRequest(String.format(GagApi.LIST, "hot", page), Feed.FeedRequestData.class, responseListener(), errorListener()));
+    private void loadData(String next) {
+        executeRequest(new GsonRequest(String.format(GagApi.LIST, mCategory.name(), next), Feed.FeedRequestData.class, responseListener(), errorListener()));
     }
 
     private Response.Listener<Feed.FeedRequestData> responseListener() {
@@ -80,16 +89,37 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
                 TaskUtils.executeAsyncTask(new AsyncTask<Object, Object, Object>() {
                     @Override
                     protected Object doInBackground(Object... params) {
-                        if (mPage == 1) {
+                        if ("0".equals(mPage)) {
                             mDataHelper.deleteAll();
+                            mPage = response.getPage();
                         }
                         ArrayList<Feed> feeds = response.data;
                         mDataHelper.bulkInsert(feeds);
                         return null;
                     }
+
+                    @Override
+                    protected void onPostExecute(Object o) {
+                        super.onPostExecute(o);
+                        mSwipeLayout.setRefreshing(false);
+                    }
                 });
             }
         };
+    }
+
+    private void loadFirst() {
+        mPage = "0";
+        loadData("0");
+    }
+
+    private void loadNext() {
+        loadData(mPage);
+    }
+
+    public void loadFirstAndScrollToTop() {
+        ListViewUtils.smoothScrollListViewToTop(mListView);
+        loadFirst();
     }
 
     @Override
@@ -101,12 +131,17 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         mAdapter.changeCursor(data);
         if (data != null && data.getCount() == 0) {
-            loadData(0);
+            loadFirst();
         }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         mAdapter.changeCursor(null);
+    }
+
+    @Override
+    public void onRefresh() {
+        loadFirst();
     }
 }
