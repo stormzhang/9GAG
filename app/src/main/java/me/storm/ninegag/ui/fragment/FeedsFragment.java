@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 
 import java.util.ArrayList;
 
@@ -27,6 +30,8 @@ import me.storm.ninegag.model.Feed;
 import me.storm.ninegag.ui.adapter.FeedsAdapter;
 import me.storm.ninegag.util.ListViewUtils;
 import me.storm.ninegag.util.TaskUtils;
+import me.storm.ninegag.view.LoadingFooter;
+import me.storm.ninegag.view.PageListView;
 
 /**
  * Created by storm on 14-3-25.
@@ -36,7 +41,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeLayout;
     @InjectView(R.id.listView)
-    ListView mListView;
+    PageListView mListView;
     private Category mCategory;
     private FeedsDataHelper mDataHelper;
     private FeedsAdapter mAdapter;
@@ -58,7 +63,15 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         parseArgument();
         mDataHelper = new FeedsDataHelper(App.getContext(), mCategory);
         mAdapter = new FeedsAdapter(getActivity(), mListView);
+        View header = new View(getActivity());
+        mListView.addHeaderView(header);
         mListView.setAdapter(mAdapter);
+        mListView.setLoadNextListener(new PageListView.OnLoadNextListener() {
+            @Override
+            public void onLoadNext() {
+                loadNext();
+            }
+        });
 
         mSwipeLayout.setOnRefreshListener(this);
         mSwipeLayout.setColorScheme(android.R.color.holo_blue_bright,
@@ -83,16 +96,17 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     }
 
     private Response.Listener<Feed.FeedRequestData> responseListener() {
+        final boolean isRefreshFromTop = "0".equals(mPage);
         return new Response.Listener<Feed.FeedRequestData>() {
             @Override
             public void onResponse(final Feed.FeedRequestData response) {
                 TaskUtils.executeAsyncTask(new AsyncTask<Object, Object, Object>() {
                     @Override
                     protected Object doInBackground(Object... params) {
-                        if ("0".equals(mPage)) {
+                        if (isRefreshFromTop) {
                             mDataHelper.deleteAll();
-                            mPage = response.getPage();
                         }
+                        mPage = response.getPage();
                         ArrayList<Feed> feeds = response.data;
                         mDataHelper.bulkInsert(feeds);
                         return null;
@@ -101,16 +115,31 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
                     @Override
                     protected void onPostExecute(Object o) {
                         super.onPostExecute(o);
-                        mSwipeLayout.setRefreshing(false);
+                        if (isRefreshFromTop) {
+                            mSwipeLayout.setRefreshing(false);
+                        } else {
+                            mListView.setState(LoadingFooter.State.Idle, 3000);
+                        }
                     }
                 });
             }
         };
     }
 
+    protected Response.ErrorListener errorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(App.getContext(), R.string.loading_failed, Toast.LENGTH_SHORT).show();
+                mSwipeLayout.setRefreshing(false);
+                mListView.setState(LoadingFooter.State.Idle, 3000);
+            }
+        };
+    }
+
     private void loadFirst() {
         mPage = "0";
-        loadData("0");
+        loadData(mPage);
     }
 
     private void loadNext() {
