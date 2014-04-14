@@ -28,6 +28,7 @@ import me.storm.ninegag.data.GsonRequest;
 import me.storm.ninegag.model.Category;
 import me.storm.ninegag.model.Feed;
 import me.storm.ninegag.ui.adapter.FeedsAdapter;
+import me.storm.ninegag.util.ActionBarUtils;
 import me.storm.ninegag.util.ListViewUtils;
 import me.storm.ninegag.util.TaskUtils;
 import me.storm.ninegag.view.LoadingFooter;
@@ -73,6 +74,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
             }
         });
 
+        initActionBar();
         mSwipeLayout.setOnRefreshListener(this);
         mSwipeLayout.setColorScheme(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
@@ -84,6 +86,16 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         mSwipeLayout.setRefreshing(true);
         loadFirst();
         return contentView;
+    }
+
+    private void initActionBar() {
+        View actionBarContainer = ActionBarUtils.findActionBarContainer(getActivity());
+        actionBarContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListViewUtils.smoothScrollListViewToTop(mListView);
+            }
+        });
     }
 
     private void parseArgument() {
