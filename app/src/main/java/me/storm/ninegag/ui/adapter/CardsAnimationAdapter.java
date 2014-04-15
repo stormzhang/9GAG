@@ -18,13 +18,12 @@ import me.storm.ninegag.App;
 public class CardsAnimationAdapter extends AnimationAdapter {
     private float mTranslationY = 400;
 
-    private float mRotationX = 8;
+    private float mRotationX = 15;
 
-    private long mDuration;
+    private long mDuration = 400;
 
     public CardsAnimationAdapter(BaseAdapter baseAdapter) {
         super(baseAdapter);
-        mDuration = App.getContext().getResources().getInteger(R.integer.config_mediumAnimTime);
     }
 
     @Override
