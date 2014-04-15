@@ -18,13 +18,14 @@ import me.storm.ninegag.model.Category;
 import me.storm.ninegag.ui.fragment.BaseFragment;
 import me.storm.ninegag.ui.fragment.DrawerFragment;
 import me.storm.ninegag.ui.fragment.FeedsFragment;
+import me.storm.ninegag.view.FoldingDrawerLayout;
 
 /**
  * Created by storm on 14-3-24.
  */
 public class MainActivity extends BaseActivity {
     @InjectView(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
+    FoldingDrawerLayout mDrawerLayout;
 
     private ActionBarDrawerToggle mDrawerToggle;
 
