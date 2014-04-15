@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ import me.storm.ninegag.dao.FeedsDataHelper;
 import me.storm.ninegag.data.GsonRequest;
 import me.storm.ninegag.model.Category;
 import me.storm.ninegag.model.Feed;
+import me.storm.ninegag.ui.adapter.CardsAnimationAdapter;
 import me.storm.ninegag.ui.adapter.FeedsAdapter;
 import me.storm.ninegag.util.ActionBarUtils;
 import me.storm.ninegag.util.ListViewUtils;
@@ -69,7 +71,9 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         mAdapter = new FeedsAdapter(getActivity(), mListView);
         View header = new View(getActivity());
         mListView.addHeaderView(header);
-        mListView.setAdapter(mAdapter);
+        AnimationAdapter animationAdapter = new CardsAnimationAdapter(mAdapter);
+        animationAdapter.setAbsListView(mListView);
+        mListView.setAdapter(animationAdapter);
         mListView.setLoadNextListener(new PageListView.OnLoadNextListener() {
             @Override
             public void onLoadNext() {
