@@ -39,10 +39,13 @@ import me.storm.ninegag.view.PageListView;
  */
 public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor>, SwipeRefreshLayout.OnRefreshListener {
     public static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
+
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeLayout;
+
     @InjectView(R.id.listView)
     PageListView mListView;
+
     private Category mCategory;
     private FeedsDataHelper mDataHelper;
     private FeedsAdapter mAdapter;
@@ -108,7 +111,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     }
 
     private Response.Listener<Feed.FeedRequestData> responseListener() {
-        final boolean isRefreshFromTop = "0".equals(mPage);
+        final boolean isRefreshFromTop = ("0".equals(mPage));
         return new Response.Listener<Feed.FeedRequestData>() {
             @Override
             public void onResponse(final Feed.FeedRequestData response) {

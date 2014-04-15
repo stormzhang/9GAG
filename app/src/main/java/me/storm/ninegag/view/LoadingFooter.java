@@ -14,11 +14,11 @@ import me.storm.ninegag.R;
 public class LoadingFooter {
     protected View mLoadingFooter;
 
-    protected TextView mLoadingText;
+    TextView mLoadingText;
+
+    ProgressBar mProgress;
 
     protected State mState = State.Idle;
-
-    private ProgressBar mProgress;
 
     private long mAnimationDuration;
 
@@ -29,14 +29,13 @@ public class LoadingFooter {
     public LoadingFooter(Context context) {
         mLoadingFooter = LayoutInflater.from(context).inflate(R.layout.loading_footer, null);
         mLoadingFooter.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 // 屏蔽点击
             }
         });
-        mProgress = (ProgressBar) mLoadingFooter.findViewById(R.id.progressBar);
         mLoadingText = (TextView) mLoadingFooter.findViewById(R.id.textView);
+        mProgress = (ProgressBar) mLoadingFooter.findViewById(R.id.progressBar);
         mAnimationDuration = context.getResources().getInteger(
                 android.R.integer.config_shortAnimTime);
         setState(State.Idle);
@@ -52,7 +51,6 @@ public class LoadingFooter {
 
     public void setState(final State state, long delay) {
         mLoadingFooter.postDelayed(new Runnable() {
-
             @Override
             public void run() {
                 setState(state);
