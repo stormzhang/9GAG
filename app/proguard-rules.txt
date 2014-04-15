@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+# android-gif-drawable
+# public class pl.droidsonroids.gif.GifIOException{*;}

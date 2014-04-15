@@ -1,5 +1,6 @@
 package me.storm.ninegag.ui.fragment;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ import me.storm.ninegag.dao.FeedsDataHelper;
 import me.storm.ninegag.data.GsonRequest;
 import me.storm.ninegag.model.Category;
 import me.storm.ninegag.model.Feed;
+import me.storm.ninegag.ui.ImageViewActivity;
 import me.storm.ninegag.ui.adapter.CardsAnimationAdapter;
 import me.storm.ninegag.ui.adapter.FeedsAdapter;
 import me.storm.ninegag.util.ActionBarUtils;
@@ -40,7 +43,7 @@ import me.storm.ninegag.view.PageListView;
  * Created by storm on 14-3-25.
  */
 public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor>, SwipeRefreshLayout.OnRefreshListener {
-    public static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
+    public static final String EXTRA_CATEGORY = "extra_category";
 
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeLayout;
@@ -78,6 +81,16 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
             @Override
             public void onLoadNext() {
                 loadNext();
+            }
+        });
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String imageUrl = mAdapter.getItem(position - mListView.getHeaderViewsCount()).images.large;
+                Intent intent = new Intent(getActivity(), ImageViewActivity.class);
+                intent.putExtra(ImageViewActivity.IMAGE_URL, imageUrl);
+                startActivity(intent);
             }
         });
 
