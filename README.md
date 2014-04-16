@@ -7,7 +7,7 @@
 
 吐槽：9gag的api真是太不RESTFul了...
 
-![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag.png)
+![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag.jpg)
 
 ## 开发工具
 
