@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.ImageViewActivity" />
+        <activity android:name=".ui.PreferenceActivity" />
     </application>
 
 </manifest>

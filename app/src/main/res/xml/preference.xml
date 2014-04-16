@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/app_name">
+        <Preference android:title="@string/pref_app_des" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_title_about">
+        <Preference
+            android:title="@string/pref_summary_dev"
+            android:summary="@string/pref_title_coder">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://weibo.com/zhangqi8" />
+        </Preference>
+        <Preference android:key="@string/pref_key_version" />
+
+        <Preference android:title="@string/pref_title_github">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.github.com/stormzhang" />
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

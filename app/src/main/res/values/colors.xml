@@ -6,4 +6,5 @@
     <color name="light_yellow">#FFF6F7</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="drawer_bg">#FFFFFFcc</color>
 </resources>

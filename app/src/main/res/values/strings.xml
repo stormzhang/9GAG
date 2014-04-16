@@ -11,4 +11,12 @@
     <string name="action_refresh">Refresh</string>
     <string name="view_big_image">查看大图</string>
 
+    <string name="pref_app_des">全球有名的搞笑图片分享社区</string>
+    <string name="pref_summary_dev">Developer</string>
+    <string name="pref_title_about">About</string>
+    <string name="pref_title_coder">stormzhang</string>
+    <string name="pref_key_version">pref_key_version</string>
+    <string name="pref_title_github">Github</string>
+
+
 </resources>
