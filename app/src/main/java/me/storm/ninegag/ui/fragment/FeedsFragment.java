@@ -102,8 +102,6 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
                 android.R.color.holo_red_light);
 
         getLoaderManager().initLoader(0, null, this);
-
-        mSwipeLayout.setRefreshing(true);
         loadFirst();
         return contentView;
     }

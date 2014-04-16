@@ -7,7 +7,7 @@
     </style>
 
     <style name="ActionbarStyle" parent="android:Widget.Holo.ActionBar">
-        <item name="android:background">@drawable/actionbar_bg</item>
+        <item name="android:background">@color/main_bg</item>
         <item name="android:titleTextStyle">@style/ActionbarTitleTextStyle</item>
     </style>
 

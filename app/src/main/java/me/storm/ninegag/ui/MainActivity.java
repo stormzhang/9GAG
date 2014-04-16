@@ -8,10 +8,8 @@ import android.preference.PreferenceActivity;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -35,27 +33,13 @@ public class MainActivity extends BaseActivity {
 
     private Category mCategory;
 
-    private Menu mMenu;
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
         initActionBar();
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
-            public void onDrawerClosed(View view) {
-                // TODO:
-                Log.e("TAG", "onDrawerClosed");
-                setTitle(mCategory.getDisplayName());
-            }
-
-            public void onDrawerOpened(View drawerView) {
-                // TODO:
-                Log.e("TAG", "onDrawerOpened");
-                setTitle(getString(R.string.app_name));
-            }
-        };
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         setCategory(Category.hot);
@@ -89,7 +73,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        mMenu = menu;
         return true;
     }
 

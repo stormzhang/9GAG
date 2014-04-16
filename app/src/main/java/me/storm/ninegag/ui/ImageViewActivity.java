@@ -41,6 +41,7 @@ public class ImageViewActivity extends BaseActivity {
 
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        setTitle(R.string.view_big_image);
 
         mAttacher = new PhotoViewAttacher(photoView);
         mAttacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
