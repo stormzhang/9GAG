@@ -8,8 +8,10 @@ import android.preference.PreferenceActivity;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -29,7 +31,11 @@ public class MainActivity extends BaseActivity {
 
     private ActionBarDrawerToggle mDrawerToggle;
 
+    private FeedsFragment mContentFragment;
+
     private Category mCategory;
+
+    private Menu mMenu;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +43,19 @@ public class MainActivity extends BaseActivity {
         ButterKnife.inject(this);
 
         initActionBar();
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+            public void onDrawerClosed(View view) {
+                // TODO:
+                Log.e("TAG", "onDrawerClosed");
+                setTitle(mCategory.getDisplayName());
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                // TODO:
+                Log.e("TAG", "onDrawerOpened");
+                setTitle(getString(R.string.app_name));
+            }
+        };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         setCategory(Category.hot);
@@ -69,11 +87,27 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        mMenu = menu;
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                mContentFragment.loadFirstAndScrollToTop();
+                return true;
+            case R.id.action_settings:
+                startActivity(new Intent(this, PreferenceActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 
@@ -83,6 +117,8 @@ public class MainActivity extends BaseActivity {
             return;
         }
         mCategory = category;
-        replaceFragment(R.id.content_frame, FeedsFragment.newInstance(category));
+        setTitle(mCategory.getDisplayName());
+        mContentFragment = FeedsFragment.newInstance(category);
+        replaceFragment(R.id.content_frame, mContentFragment);
     }
 }

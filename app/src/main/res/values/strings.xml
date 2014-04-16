@@ -8,5 +8,6 @@
     <string name="loading_failed">加载失败</string>
     <string name="loading">Loading...</string>
     <string name="the_end">TheEnd</string>
+    <string name="action_refresh">Refresh</string>
 
 </resources>
