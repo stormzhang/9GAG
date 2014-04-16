@@ -13,6 +13,10 @@ apk文件夹下附带安装包，当然你也可以扫描二维码下载：
 
 ![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag_qrcode.png)
 
+## 导入
+
+如果你是直接导入Studio，则应该不会有问题，只需要检查你本地的gradle版本即可。如果你要导入eclipse，则ButterKnife可能会不起作用，需要参考[这里](http://jakewharton.github.io/butterknife/ide-eclipse.html)做一些配置。
+
 ## 预览
 
 ![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag.jpg)
