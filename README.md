@@ -3,9 +3,15 @@
 
 ## About
 
-遵循Android Design的9GAG客户端，练习之作，主要使用Android方面最新的IDE，新的技术、新特性，以及一些流行的开源库快速开发一个不错的REST Client，教你如何Make A Good App! (apk文件夹下附带安装包)
+遵循Android Design的9GAG客户端，练习之作，主要使用Android方面最新的IDE，新的技术、新特性，以及一些流行的开源库快速开发一个不错的REST Client，教你如何Make A Good App! 
 
 吐槽：9gag的api真是太不RESTFul了...
+
+## 安装
+
+apk文件夹下附带安装包，当然你也可以扫描二维码下载：
+
+![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag_qrcode.jpg)
 
 ![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag.jpg)
 
