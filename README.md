@@ -58,6 +58,10 @@ Android Studio(0.5.4) + Gradle(1.11)
 
 I will gladly accept pull requests for fixes and feature enhancements but please do them in the develop branch.
 
+## 感谢
+
+感谢Issacw0ng大神的[Dribbo](https://github.com/Issacw0ng/Dribbo)项目，在代码结构以及一些统一数据库管理方面借鉴了下，特此感谢。
+
 ## 关于我
 
 [见这里](http://stormzhang.github.io/about.html)
