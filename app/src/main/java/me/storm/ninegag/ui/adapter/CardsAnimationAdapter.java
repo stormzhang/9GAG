@@ -43,9 +43,4 @@ public class CardsAnimationAdapter extends AnimationAdapter {
                 ObjectAnimator.ofFloat(view, "rotationX", mRotationX, 0)
         };
     }
-
-    protected void prepareAnimation(View view) {
-        ViewHelper.setTranslationY(view, mTranslationY);
-        ViewHelper.setRotationX(view, mRotationX);
-    }
 }
