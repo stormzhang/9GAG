@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -17,6 +20,8 @@ import me.storm.ninegag.model.Category;
 import me.storm.ninegag.ui.fragment.BaseFragment;
 import me.storm.ninegag.ui.fragment.DrawerFragment;
 import me.storm.ninegag.ui.fragment.FeedsFragment;
+import me.storm.ninegag.util.ToastUtils;
+import me.storm.ninegag.view.BlurFoldingActionBarToggle;
 import me.storm.ninegag.view.FoldingDrawerLayout;
 
 /**
@@ -26,11 +31,13 @@ public class MainActivity extends BaseActivity {
     @InjectView(R.id.drawer_layout)
     FoldingDrawerLayout mDrawerLayout;
 
-    private ActionBarDrawerToggle mDrawerToggle;
+    private BlurFoldingActionBarToggle mDrawerToggle;
 
     private FeedsFragment mContentFragment;
 
     private Category mCategory;
+
+    private Menu mMenu;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +45,19 @@ public class MainActivity extends BaseActivity {
         ButterKnife.inject(this);
 
         initActionBar();
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close);
+        mDrawerToggle = new BlurFoldingActionBarToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View view) {
+                setTitle(R.string.app_name);
+                mMenu.findItem(R.id.action_refresh).setVisible(false);
+            }
+
+            @Override
+            public void onDrawerClosed(View view) {
+                setTitle(mCategory.getDisplayName());
+                mMenu.findItem(R.id.action_refresh).setVisible(true);
+            }
+        };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         setCategory(Category.hot);
@@ -72,6 +91,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+        mMenu = menu;
         return true;
     }
 
