@@ -10,7 +10,7 @@ import me.storm.ninegag.ui.fragment.PreferenceFragment;
 /**
  * Created by storm on 14-4-16.
  */
-public class PreferenceActivity extends BaseActivity {
+public class PreferenceActivity extends SwipeBackPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
