@@ -32,7 +32,9 @@
         <activity
             android:name=".ui.ImageViewActivity"
             android:theme="@style/TranslucentTheme" />
-        <activity android:name=".ui.PreferenceActivity" />
+        <activity
+            android:name=".ui.PreferenceActivity"
+            android:theme="@style/TranslucentTheme" />
     </application>
 
 </manifest>
