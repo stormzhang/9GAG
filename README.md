@@ -19,7 +19,7 @@ apk文件夹下附带安装包，当然你也可以扫描二维码下载：
 
 ## 预览
 
-![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag.jpg)
+![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag_v1.1_merge.png)
 
 ## 开发工具
 
@@ -35,6 +35,12 @@ Android Studio(0.5.7) + Gradle(1.11)
 ## 用到的开源库
 
 目前用到的一些开源库，会持续更新。
+
+#### v1.1
+
+* [SwipeBackLayout](https://github.com/Issacw0ng/SwipeBackLayout) 你的App还没有支持手势滑动返回么？那就有点Out了。
+
+#### v1.0
 
 * [Volley](https://android.googlesource.com/platform/frameworks/volley) Google I/O 2013推出的官方网络请求库，请求快速，使用方便，易于扩展，而且支持图片异步加载。
 
