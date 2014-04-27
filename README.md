@@ -19,7 +19,7 @@ apk文件夹下附带安装包，当然你也可以扫描二维码下载：
 
 ## 预览
 
-![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag_v1.1_merge.png)
+![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag.jpg)
 
 ## 开发工具
 
