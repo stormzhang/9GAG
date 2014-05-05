@@ -65,8 +65,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initActionBar() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayShowTitleEnabled(true);
     }
