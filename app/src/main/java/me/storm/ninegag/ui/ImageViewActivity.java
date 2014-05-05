@@ -39,8 +39,6 @@ public class ImageViewActivity extends SwipeBackActivity {
         setContentView(R.layout.activity_imageview);
         ButterKnife.inject(this);
 
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
         setTitle(R.string.view_big_image);
 
         mAttacher = new PhotoViewAttacher(photoView);
@@ -66,16 +64,6 @@ public class ImageViewActivity extends SwipeBackActivity {
                 progressWheel.setProgress(360 * current / total);
             }
         });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -9,6 +9,7 @@
 
     <style name="ActionbarStyle" parent="android:Widget.Holo.ActionBar">
         <item name="android:background">@color/main_bg</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_back_holo_light</item>
         <item name="android:titleTextStyle">@style/ActionbarTitleTextStyle</item>
     </style>
 

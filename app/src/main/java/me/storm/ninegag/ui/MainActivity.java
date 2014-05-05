@@ -102,9 +102,6 @@ public class MainActivity extends BaseActivity {
             case R.id.action_refresh:
                 mContentFragment.loadFirstAndScrollToTop();
                 return true;
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferenceActivity.class));
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
