@@ -4,23 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/listitem_feed_selector"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical"
-    android:padding="8dip">
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/tv_caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dip"
-        android:text="哈哈"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="normal" />
 
     <ImageView
         android:id="@+id/iv_normal"
         android:layout_width="match_parent"
-        android:layout_height="250dip"
-        android:layout_marginBottom="4dip"
+        android:layout_height="200dp"
         android:background="#c9c9c9"
         android:scaleType="centerCrop" />
 

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.etsy.android.grid.StaggeredGridView;
 import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
 
 import java.util.ArrayList;
@@ -46,8 +47,11 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeLayout;
 
-    @InjectView(R.id.listView)
-    PageListView mListView;
+//    @InjectView(R.id.listView)
+//    PageListView mListView;
+
+    @InjectView(R.id.grid_view)
+    StaggeredGridView gridView;
 
     private Category mCategory;
     private FeedsDataHelper mDataHelper;
@@ -69,23 +73,23 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
 
         parseArgument();
         mDataHelper = new FeedsDataHelper(App.getContext(), mCategory);
-        mAdapter = new FeedsAdapter(getActivity(), mListView);
+        mAdapter = new FeedsAdapter(getActivity(), gridView);
         View header = new View(getActivity());
-        mListView.addHeaderView(header);
+        gridView.addHeaderView(header);
         AnimationAdapter animationAdapter = new CardsAnimationAdapter(mAdapter);
-        animationAdapter.setAbsListView(mListView);
-        mListView.setAdapter(animationAdapter);
-        mListView.setLoadNextListener(new PageListView.OnLoadNextListener() {
-            @Override
-            public void onLoadNext() {
-                loadNext();
-            }
-        });
+        animationAdapter.setAbsListView(gridView);
+        gridView.setAdapter(animationAdapter);
+//        gridView.setLoadNextListener(new PageListView.OnLoadNextListener() {
+//            @Override
+//            public void onLoadNext() {
+//                loadNext();
+//            }
+//        });
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String imageUrl = mAdapter.getItem(position - mListView.getHeaderViewsCount()).images.large;
+                String imageUrl = mAdapter.getItem(position - gridView.getHeaderViewsCount()).images.large;
                 Intent intent = new Intent(getActivity(), ImageViewActivity.class);
                 intent.putExtra(ImageViewActivity.IMAGE_URL, imageUrl);
                 startActivity(intent);
@@ -109,7 +113,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         actionBarContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListViewUtils.smoothScrollListViewToTop(mListView);
+//                ListViewUtils.smoothScrollListViewToTop(gridView);
             }
         });
     }
@@ -149,7 +153,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
                         if (isRefreshFromTop) {
                             mSwipeLayout.setRefreshing(false);
                         } else {
-                            mListView.setState(LoadingFooter.State.Idle, 3000);
+//                            mListView.setState(LoadingFooter.State.Idle, 3000);
                         }
                     }
                 });
@@ -163,7 +167,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(App.getContext(), R.string.loading_failed, Toast.LENGTH_SHORT).show();
                 mSwipeLayout.setRefreshing(false);
-                mListView.setState(LoadingFooter.State.Idle, 3000);
+//                mListView.setState(LoadingFooter.State.Idle, 3000);
             }
         };
     }
@@ -178,7 +182,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     }
 
     public void loadFirstAndScrollToTop() {
-        ListViewUtils.smoothScrollListViewToTop(mListView);
+//        ListViewUtils.smoothScrollListViewToTop(mListView);
         loadFirst();
     }
 

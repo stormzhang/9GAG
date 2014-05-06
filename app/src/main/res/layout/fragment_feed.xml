@@ -4,20 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <me.storm.ninegag.view.PageListView
-        android:id="@+id/listView"
+    <com.etsy.android.grid.StaggeredGridView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:listSelector="@android:color/transparent"
-        android:dividerHeight="15dip"
-        android:drawSelectorOnTop="true"
-        android:footerDividersEnabled="true"
-        android:headerDividersEnabled="true"
-        android:paddingLeft="15dip"
-        android:paddingRight="15dip"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollingCache="true"
-        android:smoothScrollbar="true" />
+        app:item_margin="8dp"
+        app:column_count="@integer/column_count" />
 </android.support.v4.widget.SwipeRefreshLayout>

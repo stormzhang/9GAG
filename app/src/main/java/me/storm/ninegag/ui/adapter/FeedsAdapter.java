@@ -10,11 +10,13 @@ import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.etsy.android.grid.StaggeredGridView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -29,11 +31,11 @@ import me.storm.ninegag.model.Feed;
 public class FeedsAdapter extends CursorAdapter {
     private LayoutInflater mLayoutInflater;
 
-    private ListView mListView;
+    private StaggeredGridView mListView;
 
     private Drawable mDefaultImageDrawable = new ColorDrawable(Color.argb(255, 201, 201, 201));
 
-    public FeedsAdapter(Context context, ListView listView) {
+    public FeedsAdapter(Context context, StaggeredGridView listView) {
         super(context, null, false);
         mLayoutInflater = ((Activity) context).getLayoutInflater();
         mListView = listView;
