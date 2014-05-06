@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
         android:dividerHeight="15dip"
         android:drawSelectorOnTop="true"
         android:footerDividersEnabled="true"

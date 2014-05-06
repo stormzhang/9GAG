@@ -44,7 +44,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
-        initActionBar();
         mDrawerToggle = new BlurFoldingActionBarToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View view) {
@@ -62,11 +61,6 @@ public class MainActivity extends BaseActivity {
 
         setCategory(Category.hot);
         replaceFragment(R.id.left_drawer, new DrawerFragment());
-    }
-
-    private void initActionBar() {
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayShowTitleEnabled(true);
     }
 
     @Override

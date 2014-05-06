@@ -25,6 +25,8 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
     }
 
     @Override

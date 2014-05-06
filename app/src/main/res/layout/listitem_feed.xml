@@ -2,26 +2,26 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="8dip"
     android:layout_height="match_parent"
     android:background="@drawable/listitem_feed_selector"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="8dip">
 
     <TextView
         android:id="@+id/tv_caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:layout_marginBottom="6dip"
-        android:text="哈哈"/>
+        android:text="哈哈"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/iv_normal"
         android:layout_width="match_parent"
         android:layout_height="250dip"
-        android:background="#c9c9c9"
         android:layout_marginBottom="4dip"
-        android:scaleType="centerCrop"/>
+        android:background="#c9c9c9"
+        android:scaleType="centerCrop" />
 
 </LinearLayout>
