@@ -1,6 +1,7 @@
 package me.storm.ninegag.util;
 
 import android.os.Build;
+import android.widget.AbsListView;
 import android.widget.ListView;
 
 /**
@@ -16,7 +17,7 @@ public class ListViewUtils {
      *
      * @param listView
      */
-    public static void smoothScrollListViewToTop(final ListView listView) {
+    public static void smoothScrollListViewToTop(final AbsListView listView) {
         if (listView == null) {
             return;
         }
@@ -35,7 +36,7 @@ public class ListViewUtils {
      * @param listView
      * @param position
      */
-    public static void smoothScrollListView(ListView listView, int position) {
+    public static void smoothScrollListView(AbsListView listView, int position) {
         if (Build.VERSION.SDK_INT > 7) {
             listView.smoothScrollToPositionFromTop(0, 0);
         } else {

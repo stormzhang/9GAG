@@ -65,8 +65,4 @@ public class PageListView extends ListView implements AbsListView.OnScrollListen
     public void setState(LoadingFooter.State status, long delay) {
         mLoadingFooter.setState(status, delay);
     }
-
-    public interface OnLoadNextListener {
-        public void onLoadNext();
-    }
 }

@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.etsy.android.grid.StaggeredGridView;
 import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
 
 import java.util.ArrayList;
@@ -36,7 +35,8 @@ import me.storm.ninegag.util.ActionBarUtils;
 import me.storm.ninegag.util.ListViewUtils;
 import me.storm.ninegag.util.TaskUtils;
 import me.storm.ninegag.view.LoadingFooter;
-import me.storm.ninegag.view.PageListView;
+import me.storm.ninegag.view.OnLoadNextListener;
+import me.storm.ninegag.view.PageStaggeredGridView;
 
 /**
  * Created by storm on 14-3-25.
@@ -47,11 +47,8 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeLayout;
 
-//    @InjectView(R.id.listView)
-//    PageListView mListView;
-
     @InjectView(R.id.grid_view)
-    StaggeredGridView gridView;
+    PageStaggeredGridView gridView;
 
     private Category mCategory;
     private FeedsDataHelper mDataHelper;
@@ -79,12 +76,12 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         AnimationAdapter animationAdapter = new CardsAnimationAdapter(mAdapter);
         animationAdapter.setAbsListView(gridView);
         gridView.setAdapter(animationAdapter);
-//        gridView.setLoadNextListener(new PageListView.OnLoadNextListener() {
-//            @Override
-//            public void onLoadNext() {
-//                loadNext();
-//            }
-//        });
+        gridView.setLoadNextListener(new OnLoadNextListener() {
+            @Override
+            public void onLoadNext() {
+                loadNext();
+            }
+        });
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -113,7 +110,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         actionBarContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ListViewUtils.smoothScrollListViewToTop(gridView);
+                ListViewUtils.smoothScrollListViewToTop(gridView);
             }
         });
     }
@@ -153,7 +150,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
                         if (isRefreshFromTop) {
                             mSwipeLayout.setRefreshing(false);
                         } else {
-//                            mListView.setState(LoadingFooter.State.Idle, 3000);
+                            gridView.setState(LoadingFooter.State.Idle, 3000);
                         }
                     }
                 });
@@ -167,7 +164,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(App.getContext(), R.string.loading_failed, Toast.LENGTH_SHORT).show();
                 mSwipeLayout.setRefreshing(false);
-//                mListView.setState(LoadingFooter.State.Idle, 3000);
+                gridView.setState(LoadingFooter.State.Idle, 3000);
             }
         };
     }
@@ -182,7 +179,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     }
 
     public void loadFirstAndScrollToTop() {
-//        ListViewUtils.smoothScrollListViewToTop(mListView);
+        ListViewUtils.smoothScrollListViewToTop(gridView);
         loadFirst();
     }
 
