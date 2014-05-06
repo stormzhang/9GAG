@@ -1,14 +1,9 @@
 package me.storm.ninegag.ui;
 
-import android.app.ActionBar;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +15,6 @@ import me.storm.ninegag.model.Category;
 import me.storm.ninegag.ui.fragment.BaseFragment;
 import me.storm.ninegag.ui.fragment.DrawerFragment;
 import me.storm.ninegag.ui.fragment.FeedsFragment;
-import me.storm.ninegag.util.ToastUtils;
 import me.storm.ninegag.view.BlurFoldingActionBarToggle;
 import me.storm.ninegag.view.FoldingDrawerLayout;
 

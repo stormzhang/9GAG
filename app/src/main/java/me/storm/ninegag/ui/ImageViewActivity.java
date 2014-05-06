@@ -1,11 +1,7 @@
 package me.storm.ninegag.ui;
 
-import android.app.ActionBar;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -17,6 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.storm.ninegag.R;
 import me.storm.ninegag.view.ProgressWheel;
+import me.storm.ninegag.view.swipeback.SwipeBackActivity;
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 

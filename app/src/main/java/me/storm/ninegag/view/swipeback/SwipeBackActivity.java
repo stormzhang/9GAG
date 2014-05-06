@@ -1,12 +1,10 @@
 
-package me.storm.ninegag.ui;
+package me.storm.ninegag.view.swipeback;
 
 import android.os.Bundle;
 import android.view.View;
 
-import me.storm.ninegag.view.swipeback.SwipeBackActivityBase;
-import me.storm.ninegag.view.swipeback.SwipeBackActivityHelper;
-import me.storm.ninegag.view.swipeback.SwipeBackLayout;
+import me.storm.ninegag.ui.BaseActivity;
 
 public class SwipeBackActivity extends BaseActivity implements SwipeBackActivityBase {
     private SwipeBackActivityHelper mHelper;
