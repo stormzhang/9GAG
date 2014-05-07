@@ -1,14 +1,13 @@
 package me.storm.ninegag.ui.fragment;
 
-import me.storm.ninegag.App;
-import me.storm.ninegag.data.RequestManager;
+import android.support.v4.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-import android.support.v4.app.Fragment;
-import android.widget.Toast;
+import me.storm.ninegag.data.RequestManager;
+import me.storm.ninegag.util.ToastUtils;
 
 /**
  * Created by storm on 14-3-25.
@@ -29,7 +28,7 @@ public class BaseFragment extends Fragment {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(App.getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                ToastUtils.showLong(error.getMessage());
             }
         };
     }

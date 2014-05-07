@@ -1,7 +1,6 @@
 package me.storm.ninegag.ui.fragment;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -36,8 +34,8 @@ import me.storm.ninegag.ui.ImageViewActivity;
 import me.storm.ninegag.ui.adapter.CardsAnimationAdapter;
 import me.storm.ninegag.ui.adapter.FeedsAdapter;
 import me.storm.ninegag.util.ActionBarUtils;
-import me.storm.ninegag.util.ListViewUtils;
 import me.storm.ninegag.util.TaskUtils;
+import me.storm.ninegag.util.ToastUtils;
 import me.storm.ninegag.view.LoadingFooter;
 import me.storm.ninegag.view.OnLoadNextListener;
 import me.storm.ninegag.view.PageStaggeredGridView;
@@ -122,7 +120,8 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         actionBarContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListViewUtils.smoothScrollListViewToTop(gridView);
+//                ListViewUtils.smoothScrollListViewToTop(gridView);
+                gridView.smoothScrollToPositionFromTop(0, 0);
             }
         });
     }
@@ -130,12 +129,6 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     private void parseArgument() {
         Bundle bundle = getArguments();
         mCategory = Category.valueOf(bundle.getString(EXTRA_CATEGORY));
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        gridView.setColumnCount(getResources().getInteger(R.integer.column_count));
     }
 
     private void loadData(String next) {
@@ -180,7 +173,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(App.getContext(), R.string.loading_failed, Toast.LENGTH_SHORT).show();
+                ToastUtils.showShort(R.string.loading_failed);
                 setRefreshing(false);
                 gridView.setState(LoadingFooter.State.Idle, 3000);
             }
@@ -197,7 +190,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     }
 
     public void loadFirstAndScrollToTop() {
-        ListViewUtils.smoothScrollListViewToTop(gridView);
+        // TODO: gridView scroll to top
         loadFirst();
     }
 
