@@ -95,7 +95,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-
     public void setCategory(Category category) {
         mDrawerLayout.closeDrawer(GravityCompat.START);
         if (mCategory == category) {

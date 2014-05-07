@@ -1,6 +1,7 @@
 package me.storm.ninegag.ui.fragment;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -50,6 +54,8 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     @InjectView(R.id.grid_view)
     PageStaggeredGridView gridView;
 
+    private MenuItem mRefreshItem;
+
     private Category mCategory;
     private FeedsDataHelper mDataHelper;
     private FeedsAdapter mAdapter;
@@ -61,6 +67,12 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         bundle.putString(EXTRA_CATEGORY, category.name());
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -120,9 +132,15 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         mCategory = Category.valueOf(bundle.getString(EXTRA_CATEGORY));
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        gridView.setColumnCount(getResources().getInteger(R.integer.column_count));
+    }
+
     private void loadData(String next) {
         if (!mSwipeLayout.isRefreshing() && ("0".equals(next))) {
-            mSwipeLayout.setRefreshing(true);
+            setRefreshing(true);
         }
         executeRequest(new GsonRequest(String.format(GagApi.LIST, mCategory.name(), next), Feed.FeedRequestData.class, responseListener(), errorListener()));
     }
@@ -148,7 +166,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
                     protected void onPostExecute(Object o) {
                         super.onPostExecute(o);
                         if (isRefreshFromTop) {
-                            mSwipeLayout.setRefreshing(false);
+                            setRefreshing(false);
                         } else {
                             gridView.setState(LoadingFooter.State.Idle, 3000);
                         }
@@ -163,7 +181,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(App.getContext(), R.string.loading_failed, Toast.LENGTH_SHORT).show();
-                mSwipeLayout.setRefreshing(false);
+                setRefreshing(false);
                 gridView.setState(LoadingFooter.State.Idle, 3000);
             }
         };
@@ -204,5 +222,21 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     @Override
     public void onRefresh() {
         loadFirst();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        mRefreshItem = menu.findItem(R.id.action_refresh);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    private void setRefreshing(boolean refreshing) {
+        mSwipeLayout.setRefreshing(refreshing);
+        if (mRefreshItem == null) return;
+
+        if (refreshing)
+            mRefreshItem.setActionView(R.layout.actionbar_refresh_progress);
+        else
+            mRefreshItem.setActionView(null);
     }
 }
