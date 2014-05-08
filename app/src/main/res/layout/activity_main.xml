@@ -8,6 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!-- blur image -->
+    <ImageView
+        android:id="@+id/blur_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
+
     <FrameLayout
         android:id="@+id/left_drawer"
         android:layout_width="240dip"

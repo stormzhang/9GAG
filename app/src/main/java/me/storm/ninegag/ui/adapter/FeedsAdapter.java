@@ -36,7 +36,7 @@ public class FeedsAdapter extends CursorAdapter {
 
     private StaggeredGridView mListView;
 
-    private Drawable mDefaultImageDrawable = new ColorDrawable(COLORS[0]);
+    private Drawable mDefaultImageDrawable;
 
     private Resources mResource;
 

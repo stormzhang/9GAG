@@ -1,6 +1,7 @@
 package me.storm.ninegag.ui;
 
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -47,6 +48,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.inject(this);
 
         actionBar.setIcon(R.drawable.ic_actionbar);
+        mDrawerLayout.setScrimColor(Color.argb(150, 255, 255, 255));
         mDrawerToggle = new BlurFoldingActionBarToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View view) {
