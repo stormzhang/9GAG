@@ -7,6 +7,8 @@ import android.support.v4.view.GravityCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -25,6 +27,12 @@ public class MainActivity extends BaseActivity {
     @InjectView(R.id.drawer_layout)
     FoldingDrawerLayout mDrawerLayout;
 
+    @InjectView(R.id.content_frame)
+    FrameLayout contentLayout;
+
+    @InjectView(R.id.blur_image)
+    ImageView blurImage;
+
     private BlurFoldingActionBarToggle mDrawerToggle;
 
     private FeedsFragment mContentFragment;
@@ -38,19 +46,26 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
+        actionBar.setIcon(R.drawable.ic_actionbar);
         mDrawerToggle = new BlurFoldingActionBarToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View view) {
+                super.onDrawerOpened(view);
                 setTitle(R.string.app_name);
                 mMenu.findItem(R.id.action_refresh).setVisible(false);
             }
 
             @Override
             public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
                 setTitle(mCategory.getDisplayName());
                 mMenu.findItem(R.id.action_refresh).setVisible(true);
+
+                blurImage.setVisibility(View.GONE);
+                blurImage.setImageBitmap(null);
             }
         };
+        mDrawerToggle.setBlurImageAndView(blurImage, contentLayout);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         setCategory(Category.hot);
