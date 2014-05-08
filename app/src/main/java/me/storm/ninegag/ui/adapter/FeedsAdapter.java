@@ -2,6 +2,7 @@ package me.storm.ninegag.ui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -29,14 +30,19 @@ import me.storm.ninegag.model.Feed;
  * Created by storm on 14-3-26.
  */
 public class FeedsAdapter extends CursorAdapter {
+    private static final int[] COLORS = {R.color.holo_blue_light, R.color.holo_green_light, R.color.holo_orange_light, R.color.holo_purple_light, R.color.holo_red_light};
+
     private LayoutInflater mLayoutInflater;
 
     private StaggeredGridView mListView;
 
-    private Drawable mDefaultImageDrawable = new ColorDrawable(Color.argb(255, 201, 201, 201));
+    private Drawable mDefaultImageDrawable = new ColorDrawable(COLORS[0]);
+
+    private Resources mResource;
 
     public FeedsAdapter(Context context, StaggeredGridView listView) {
         super(context, null, false);
+        mResource = context.getResources();
         mLayoutInflater = ((Activity) context).getLayoutInflater();
         mListView = listView;
     }
@@ -63,6 +69,7 @@ public class FeedsAdapter extends CursorAdapter {
                 + mListView.getHeaderViewsCount()));
 
         Feed feed = Feed.fromCursor(cursor);
+        mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
         holder.imageRequest = ImageCacheManager.loadImage(feed.images.normal, ImageCacheManager
                 .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable));
         holder.caption.setText(feed.caption);
