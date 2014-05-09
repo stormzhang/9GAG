@@ -13,13 +13,15 @@ apk文件夹下附带安装包，当然你也可以扫描二维码下载：
 
 ![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag_qrcode.png)
 
-## 导入
+## 导入运行
 
 如果你是直接导入Studio，则应该不会有问题，只需要检查你本地的gradle版本即可。如果你要导入eclipse，则ButterKnife可能会不起作用，需要参考[这里](http://jakewharton.github.io/butterknife/ide-eclipse.html)做一些配置。
 
+有些library是通过gradle直接引用的，具体参见app/build.gradle, 目前通过gradle引用的有support-v4、AndroidStaggeredGrid，没有使用gradle的请手动去对应的官方地址下载并引用。
+
 ## 预览
 
-![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag.jpg)
+![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag_v1.2.png)
 
 ## 开发工具
 
@@ -35,6 +37,12 @@ Android Studio(0.5.7) + Gradle(1.11)
 ## 用到的开源库
 
 目前用到的一些开源库，会持续更新。
+
+#### v1.2
+
+* [AndroidStaggeredGrid](https://github.com/etsy/AndroidStaggeredGrid) Etsy公司开源的瀑布流组件，应该算是目前瀑布流最好的开源库了，但仍然有很多需要改进的地方。
+
+* [BlurEffectForAndroidDesign](https://github.com/PomepuyN/BlurEffectForAndroidDesign) 高斯模糊（即毛玻璃）效果，让你的App在细节取胜吧！
 
 #### v1.1
 
