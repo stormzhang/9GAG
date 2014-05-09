@@ -1,31 +1,26 @@
 package me.storm.ninegag.ui.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.widget.CursorAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.etsy.android.grid.StaggeredGridView;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.storm.ninegag.R;
 import me.storm.ninegag.data.ImageCacheManager;
 import me.storm.ninegag.model.Feed;
+import me.storm.ninegag.util.DensityUtils;
 
 
 /**
@@ -33,6 +28,8 @@ import me.storm.ninegag.model.Feed;
  */
 public class FeedsAdapter extends CursorAdapter {
     private static final int[] COLORS = {R.color.holo_blue_light, R.color.holo_green_light, R.color.holo_orange_light, R.color.holo_purple_light, R.color.holo_red_light};
+
+    private static final int IMAGE_MAX_HEIGHT = 240;
 
     private LayoutInflater mLayoutInflater;
 
@@ -73,7 +70,7 @@ public class FeedsAdapter extends CursorAdapter {
         Feed feed = Feed.fromCursor(cursor);
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
         holder.imageRequest = ImageCacheManager.loadImage(feed.images.normal, ImageCacheManager
-                .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable), 0, 0);
+                .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable), 0, DensityUtils.dip2px(context, IMAGE_MAX_HEIGHT));
         holder.caption.setText(feed.caption);
     }
 
