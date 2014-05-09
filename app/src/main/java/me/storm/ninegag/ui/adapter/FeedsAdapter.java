@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.widget.CursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.etsy.android.grid.StaggeredGridView;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -43,7 +45,7 @@ public class FeedsAdapter extends CursorAdapter {
     public FeedsAdapter(Context context, StaggeredGridView listView) {
         super(context, null, false);
         mResource = context.getResources();
-        mLayoutInflater = ((Activity) context).getLayoutInflater();
+        mLayoutInflater = LayoutInflater.from(context);
         mListView = listView;
     }
 
@@ -71,7 +73,7 @@ public class FeedsAdapter extends CursorAdapter {
         Feed feed = Feed.fromCursor(cursor);
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
         holder.imageRequest = ImageCacheManager.loadImage(feed.images.normal, ImageCacheManager
-                .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable));
+                .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable), 0, 0);
         holder.caption.setText(feed.caption);
     }
 

@@ -12,7 +12,7 @@ import me.storm.ninegag.util.ToastUtils;
 /**
  * Created by storm on 14-3-25.
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onDestroy() {
