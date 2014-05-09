@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.inject(this);
 
         actionBar.setIcon(R.drawable.ic_actionbar);
-        mDrawerLayout.setScrimColor(Color.argb(150, 255, 255, 255));
+        mDrawerLayout.setScrimColor(Color.argb(100, 255, 255, 255));
         mDrawerToggle = new BlurFoldingActionBarToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View view) {

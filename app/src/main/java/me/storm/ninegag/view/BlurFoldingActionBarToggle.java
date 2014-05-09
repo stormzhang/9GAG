@@ -71,7 +71,7 @@ public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
             v.draw(c);
             return null;
         } else {
-            Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
+            Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_4444);
             Canvas c = new Canvas(b);
             v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
             v.draw(c);
