@@ -3,6 +3,7 @@ package me.storm.ninegag.view;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.os.AsyncTask;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -22,6 +23,7 @@ public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
     private Activity mActivity;
     private View mView;
     private ImageView mBlurImage;
+    private Bitmap mBlurredBmp;
 
     public BlurFoldingActionBarToggle(Activity activity, DrawerLayout drawerLayout, int drawerImageRes, int openDrawerContentDescRes, int closeDrawerContentDescRes) {
         super(activity, drawerLayout, drawerImageRes, openDrawerContentDescRes, closeDrawerContentDescRes);
@@ -35,7 +37,7 @@ public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
         }
 
         if (slideOffset > 0.0f) {
-//            setBlurAlpha(slideOffset);
+            setBlurAlpha(slideOffset);
         }
     }
 
@@ -48,12 +50,26 @@ public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
 
 
     private void startBlur() {
-        mBlurImage.setImageBitmap(null);
-        mBlurImage.setVisibility(View.VISIBLE);
+        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected void onPreExecute() {
+                mBlurImage.setImageBitmap(null);
+                mBlurImage.setVisibility(View.VISIBLE);
+            }
 
-        Bitmap source = loadBitmapFromView(mView);
-        Bitmap blur = Blur.fastblur(mActivity, source, 20);
-        mBlurImage.setImageBitmap(blur);
+            @Override
+            protected Void doInBackground(Void... params) {
+                Bitmap source = loadBitmapFromView(mView);
+                mBlurredBmp = Blur.fastblur(mActivity, source, 25);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void result) {
+                mBlurImage.setImageBitmap(mBlurredBmp);
+            }
+        };
+        task.execute();
     }
 
     public void setBlurImageAndView(ImageView blurImage, View view) {
@@ -71,7 +87,7 @@ public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
             v.draw(c);
             return null;
         } else {
-            Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_4444);
+            Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
             Canvas c = new Canvas(b);
             v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
             v.draw(c);

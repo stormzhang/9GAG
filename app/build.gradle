@@ -22,9 +22,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.etsy.android.grid:library:1.0.4'
+    compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     compile 'com.android.support:support-v4:19.1.+'
-    // 依赖单个jar文件
-    // compile files('libs/gson-2.2.4.jar')
+
+    // AndroidStaggeredGrid https://github.com/etsy/AndroidStaggeredGrid
+    compile 'com.etsy.android.grid:library:1.0.4'
+    // Shimmer-android https://github.com/RomainPiel/Shimmer-android
+    // compile 'com.romainpiel.shimmer:library:1.2.0@aar'
 }
