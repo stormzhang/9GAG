@@ -35,7 +35,7 @@ public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
         }
 
         if (slideOffset > 0.0f) {
-            setBlurAlpha(slideOffset);
+//            setBlurAlpha(slideOffset);
         }
     }
 
