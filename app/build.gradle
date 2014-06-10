@@ -28,5 +28,6 @@ dependencies {
     // AndroidStaggeredGrid https://github.com/etsy/AndroidStaggeredGrid
     compile 'com.etsy.android.grid:library:1.0.4'
     // Shimmer-android https://github.com/RomainPiel/Shimmer-android
+    compile project(':extras:ShimmerAndroid')
     // compile 'com.romainpiel.shimmer:library:1.2.0@aar'
 }

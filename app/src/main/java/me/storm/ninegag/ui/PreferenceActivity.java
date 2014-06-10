@@ -18,10 +18,6 @@ public class PreferenceActivity extends SwipeBackActivity {
         setContentView(R.layout.activity_preference);
         getFragmentManager().beginTransaction().replace(R.id.container, new PreferenceFragment())
                 .commit();
-
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
         setTitle(R.string.action_settings);
     }
 
