@@ -3,22 +3,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="horizontal">
 
-    <ProgressBar
-        style="?android:attr/progressBarStyle"
+    <me.storm.ninegag.view.titanic.TitanicTextView
+        android:id="@+id/tv_titanic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_gravity="center"
-        android:indeterminate="false" />
+        android:text="@string/loading"
+        android:textColor="#212121"
+        android:textSize="30sp" />
 
     <TextView
+        android:id="@+id/textView"
         style="?android:attr/textAppearanceMediumInverse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:text="Loading..."
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:text="The End" />
 </LinearLayout>

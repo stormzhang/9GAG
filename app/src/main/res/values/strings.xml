@@ -6,7 +6,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="loading_failed">加载失败</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading</string>
     <string name="the_end">TheEnd</string>
     <string name="action_refresh">Refresh</string>
     <string name="view_big_image">查看大图</string>
