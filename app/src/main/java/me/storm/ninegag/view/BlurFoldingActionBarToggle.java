@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.nineoldandroids.view.ViewHelper;
 
+import me.storm.ninegag.util.BitmapUtils;
 import me.storm.ninegag.util.Blur;
 
 /**
@@ -20,14 +21,21 @@ import me.storm.ninegag.util.Blur;
  * 自定义的ActionBarDrawerToggle,同时实现折叠和毛玻璃效果
  */
 public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
+    private static final int DEFAULT_RADIUS = 10;
+    private static final int DEFAULT_DOWN_SAMPLING = 3;
+
     private Activity mActivity;
-    private View mView;
+    private View mContainer;
     private ImageView mBlurImage;
-    private Bitmap mBlurredBmp;
+
+    private int mBlurRadius;
+    private int mDownSampling;
 
     public BlurFoldingActionBarToggle(Activity activity, DrawerLayout drawerLayout, int drawerImageRes, int openDrawerContentDescRes, int closeDrawerContentDescRes) {
         super(activity, drawerLayout, drawerImageRes, openDrawerContentDescRes, closeDrawerContentDescRes);
         this.mActivity = activity;
+        mBlurRadius = DEFAULT_RADIUS;
+        mDownSampling = DEFAULT_DOWN_SAMPLING;
     }
 
     public void onDrawerSlide(android.view.View drawerView, float slideOffset) {
@@ -38,60 +46,43 @@ public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
 
         if (slideOffset > 0.0f) {
             setBlurAlpha(slideOffset);
+        } else {
+            clearBlurImage();
         }
+    }
+
+    @Override
+    public void onDrawerClosed(View drawerView) {
+        super.onDrawerClosed(drawerView);
+        clearBlurImage();
     }
 
     private void setBlurAlpha(float slideOffset) {
         if (mBlurImage.getVisibility() != View.VISIBLE) {
-            startBlur();
+            setBlurImage();
         }
         ViewHelper.setAlpha(mBlurImage, slideOffset);
     }
 
-
-    private void startBlur() {
-        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected void onPreExecute() {
-                mBlurImage.setImageBitmap(null);
-                mBlurImage.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            protected Void doInBackground(Void... params) {
-                Bitmap source = loadBitmapFromView(mView);
-                mBlurredBmp = Blur.fastblur(mActivity, source, 25);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void result) {
-                mBlurImage.setImageBitmap(mBlurredBmp);
-            }
-        };
-        task.execute();
+    private void setBlurImage() {
+        mBlurImage.setImageBitmap(null);
+        mBlurImage.setVisibility(View.VISIBLE);
+        // do the downscaling for faster processing
+        Bitmap downScaled = BitmapUtils.drawViewToBitmap(mContainer,
+                mContainer.getWidth(), mContainer.getHeight(), mDownSampling);
+        // apply the blur using the renderscript
+        Bitmap blurred = Blur.fastblur(mActivity, downScaled, mBlurRadius);
+        mBlurImage.setImageBitmap(blurred);
+        downScaled.recycle();
     }
 
     public void setBlurImageAndView(ImageView blurImage, View view) {
         this.mBlurImage = blurImage;
-        this.mView = view;
+        this.mContainer = view;
     }
 
-    public static Bitmap loadBitmapFromView(View v) {
-        // view not displayed before
-        if (v.getMeasuredHeight() <= 0) {
-            v.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            Bitmap b = Bitmap.createBitmap(v.getMeasuredWidth(), v.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
-            Canvas c = new Canvas(b);
-            v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
-            v.draw(c);
-            return null;
-        } else {
-            Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
-            Canvas c = new Canvas(b);
-            v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
-            v.draw(c);
-            return b;
-        }
+    public void clearBlurImage() {
+        mBlurImage.setVisibility(View.GONE);
+        mBlurImage.setImageBitmap(null);
     }
 }
