@@ -38,6 +38,14 @@ Android Studio(0.6.1) + Gradle(1.12)
 
 目前用到的一些开源库，会持续更新。
 
+#### v1.3
+
+大神RomainPiel的两个动画库
+
+* [Shimmer-android](https://github.com/RomainPiel/Shimmer-android)
+
+* [Titanic](https://github.com/RomainPiel/Titanic)
+
 #### v1.2
 
 * [AndroidStaggeredGrid](https://github.com/etsy/AndroidStaggeredGrid) Etsy公司开源的瀑布流组件，应该算是目前瀑布流最好的开源库了，但仍然有很多需要改进的地方。

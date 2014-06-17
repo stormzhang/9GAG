@@ -161,7 +161,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
                         if (isRefreshFromTop) {
                             setRefreshing(false);
                         } else {
-                            gridView.setState(LoadingFooter.State.Idle, 3000);
+                            gridView.setState(LoadingFooter.State.Idle);
                         }
                     }
                 });
