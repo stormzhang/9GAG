@@ -21,6 +21,12 @@
                 android:action="android.intent.action.VIEW"
                 android:data="https://www.github.com/stormzhang" />
         </Preference>
+
+        <Preference android:title="@string/pref_title_donate">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/donate_url" />
+        </Preference>
     </PreferenceCategory>
 
 </PreferenceScreen>

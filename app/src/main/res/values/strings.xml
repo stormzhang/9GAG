@@ -5,11 +5,11 @@
     <string name="action_settings">Settings</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="loading_failed">加载失败</string>
+    <string name="loading_failed">Loading Failed</string>
     <string name="loading">Loading</string>
     <string name="the_end">TheEnd</string>
     <string name="action_refresh">Refresh</string>
-    <string name="view_big_image">查看大图</string>
+    <string name="view_big_image">View Image</string>
 
     <string name="pref_app_des">全球有名的搞笑图片分享社区</string>
     <string name="pref_summary_dev">Developer</string>
@@ -17,6 +17,8 @@
     <string name="pref_title_coder">stormzhang</string>
     <string name="pref_key_version">pref_key_version</string>
     <string name="pref_title_github">Github</string>
+    <string name="pref_title_donate">Donate</string>
+    <string name="donate_url">https://m.alipay.com/personal/payment.htm?reason=请我喝杯咖啡吧T_T&amp;amount=3&amp;account=zhangqi.dev@qq.com</string>
 
 
 </resources>
