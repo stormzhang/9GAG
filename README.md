@@ -25,7 +25,7 @@ apk文件夹下附带安装包，当然你也可以扫描二维码下载：
 
 ## 开发工具
 
-Android Studio(0.6.1) + Gradle(1.12)
+Android Studio(0.8.1) + Gradle(1.12)
 
 作为一名潮人，怎能不使用最新的IDE来开发呢？
 
