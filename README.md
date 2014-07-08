@@ -5,8 +5,6 @@
 
 遵循Android Design的9GAG客户端，练习之作，主要使用Android方面最新的IDE，新的技术、新特性，以及一些流行的开源库快速开发一个不错的REST Client，教你如何Make A Good App! 
 
-吐槽：9gag的api真是太不RESTFul了...
-
 ## 安装
 
 apk文件夹下附带安装包，当然你也可以扫描二维码下载：
@@ -80,13 +78,12 @@ Android Studio(0.8.1) + Gradle(1.12)
 
 I will gladly accept pull requests for fixes and feature enhancements but please do them in the develop branch.
 
-## 感谢
-
-感谢Issacw0ng大神的[Dribbo](https://github.com/Issacw0ng/Dribbo)项目，在代码结构以及一些统一数据库管理方面借鉴了下，特此感谢。
 
 ## 关于我
 
-[见这里](http://stormzhang.github.io/about.html)
+新浪微博: [googdev](http://weibo.com/zhangqi8) 分享Android方面的知识、技术、见闻
+
+[更多](http://stormzhang.github.io/about.html)
 
 License
 ============
