@@ -81,9 +81,11 @@ I will gladly accept pull requests for fixes and feature enhancements but please
 
 ## 关于我
 
-新浪微博: [googdev](http://weibo.com/zhangqi8) 分享Android方面的知识、技术、见闻
+* 新浪微博: [googdev](http://weibo.com/zhangqi8) 
 
-[更多](http://stormzhang.github.io/about.html)
+分享Android方面的知识、技术、见闻
+
+* [更多信息](http://stormzhang.github.io/about.html)
 
 License
 ============
