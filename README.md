@@ -27,7 +27,7 @@ apk文件夹下附带安装包，当然你也可以扫描二维码下载：
 
 ## 开发工具
 
-Android Studio(0.8.1) + Gradle(1.12)
+Android Studio(0.8.2) + Gradle(1.12)
 
 作为一名潮人，怎能不使用最新的IDE来开发呢？
 
@@ -85,7 +85,7 @@ I will gladly accept pull requests for fixes and feature enhancements but please
 
 ## 关于我
 
-* 新浪微博: [googdev](http://weibo.com/zhangqi8) 
+* 新浪微博: [googdev](http://weibo.com/zhangqi8)
 
 分享Android方面的知识、技术、见闻
 
