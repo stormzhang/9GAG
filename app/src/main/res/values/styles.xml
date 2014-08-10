@@ -2,7 +2,7 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:windowBackground">@drawable/main_bg</item>
+        <item name="android:windowBackground">@drawable/background</item>
         <item name="android:actionBarStyle">@style/ActionbarStyle</item>
         <item name="android:actionOverflowButtonStyle">@style/ActionbarOverFlowStyle</item>
     </style>

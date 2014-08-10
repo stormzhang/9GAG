@@ -43,7 +43,7 @@ public class DrawerAdapter extends BaseAdapter {
         }
         TextView textView = (TextView) convertView.findViewById(R.id.textView);
         textView.setText(getItem(position).getDisplayName());
-        textView.setSelected(mListView.isItemChecked(position));
+        textView.setSelected(mListView.isItemChecked(position));// 注释掉其实也没关系
         return convertView;
     }
 }

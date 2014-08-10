@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 /**
+ * 关于自定义GsonRequest，可以看郭霖的这篇博客 http://blog.csdn.net/guolin_blog/article/details/17612763
  * Created by storm on 14-3-25.
  */
 public class GsonRequest<T> extends Request<T> {

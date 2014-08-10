@@ -2,3 +2,9 @@
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
     android:src="@drawable/bg"
     android:tileMode="repeat" />
+
+    <!--
+        先来介绍tileMode（平铺）
+
+它的效果类似于 让背景小图不是拉伸而是多个重复（类似于将一张小图设置电脑桌面时的效果）
+    -->

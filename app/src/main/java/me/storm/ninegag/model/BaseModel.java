@@ -10,3 +10,7 @@ public abstract class BaseModel {
         return new Gson().toJson(this);
     }
 }
+
+
+
+
