@@ -9,3 +9,12 @@
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
     android:orientation="vertical" />
+
+    <!--
+        divider属性，该属性作用是每一项之间需要设置一个图片做为间隔，或是去掉item之间的分割线
+    android:divider="@drawable/list_driver"  其中  @drawable/list_driver 是一个图片资源，
+    如果不想显示分割线则只要设置为android:divider="@drawable/@null" 就可以了
+        作者在这里设置为透明颜色，和空是一样的。
+        android:choiceMode="singleChoice"
+        有这一条属性，才能够被保持选中的状态
+    -->

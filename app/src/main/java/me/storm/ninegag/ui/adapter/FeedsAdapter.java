@@ -24,6 +24,7 @@ import me.storm.ninegag.util.DensityUtils;
 
 
 /**
+ * 使用 CursorAdapter 读取数据库里需要的数据，把它显示到 mListview 上。
  * Created by storm on 14-3-26.
  */
 public class FeedsAdapter extends CursorAdapter {
@@ -64,8 +65,7 @@ public class FeedsAdapter extends CursorAdapter {
             holder.imageRequest.cancelRequest();
         }
 
-        view.setEnabled(!mListView.isItemChecked(cursor.getPosition()
-                + mListView.getHeaderViewsCount()));
+        view.setEnabled(!mListView.isItemChecked( cursor.getPosition() + mListView.getHeaderViewsCount() ));
 
         Feed feed = Feed.fromCursor(cursor);
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));

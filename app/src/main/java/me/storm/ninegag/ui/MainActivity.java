@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.inject(this);
 
         actionBar.setIcon(R.drawable.ic_actionbar);
-        mDrawerLayout.setScrimColor(Color.argb(100, 255, 255, 255));
+        mDrawerLayout.setScrimColor(Color.argb(100, 255, 255, 255));//设置毛玻璃的颜色
         mDrawerToggle = new BlurFoldingActionBarToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View view) {
@@ -80,6 +80,7 @@ public class MainActivity extends BaseActivity {
         mDrawerToggle.syncState();
     }
 
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -93,7 +94,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main, menu); // menu - The Menu to inflate into. The items and submenus will be added to this Menu.
         mMenu = menu;
         return true;
     }
@@ -120,6 +121,7 @@ public class MainActivity extends BaseActivity {
         mCategory = category;
         setTitle(mCategory.getDisplayName());
         mContentFragment = FeedsFragment.newInstance(category);
+        // 改变Category，重载 content_frame
         replaceFragment(R.id.content_frame, mContentFragment);
     }
 }

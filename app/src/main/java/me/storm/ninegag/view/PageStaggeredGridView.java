@@ -7,6 +7,7 @@ import android.widget.AbsListView;
 import com.etsy.android.grid.StaggeredGridView;
 
 /**
+ * 继承自瀑布流View
  * Created by storm on 14-5-6.
  */
 public class PageStaggeredGridView extends StaggeredGridView implements AbsListView.OnScrollListener {

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/listitem_feed_selector"
-    android:descendantFocusability="blocksDescendants"
-    android:orientation="vertical"
-    android:padding="8dp">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/listitem_feed_selector"
+              android:descendantFocusability="blocksDescendants"
+              android:orientation="vertical"
+              android:padding="8dp">
 
     <TextView
         android:id="@+id/tv_caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:textStyle="normal" />
+        android:text="TextView"
+        android:textStyle="normal"/>
 
     <ImageView
         android:id="@+id/iv_normal"
@@ -21,6 +22,23 @@
         android:layout_height="200dp"
         android:minHeight="200dp"
         android:background="#c9c9c9"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"/>
 
 </LinearLayout>
+
+<!--
+    android:descendantFocusability
+    该属性是当一个为view获取焦点时，定义viewGroup和其子控件两者之间的关系。
+
+属性的值有三种：
+
+    beforeDescendants：viewgroup会优先其子类控件而获取到焦点
+
+    afterDescendants：viewgroup只有当其子类控件不需要获取焦点时才获取焦点
+
+    blocksDescendants：viewgroup会覆盖子类控件而直接获得焦点
+
+    scaleType=“centerCrop”
+    不保持原图大小，以原图的几何中心点和ImagView的几何中心点为基准，只绘制ImagView大小的图像（以填满
+    ImagView为目标，对原图进行裁剪）。
+-->

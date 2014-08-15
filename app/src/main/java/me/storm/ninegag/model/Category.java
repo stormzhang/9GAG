@@ -1,6 +1,7 @@
 package me.storm.ninegag.model;
 
 /**
+ * 枚举类
  * Created by storm on 14-3-25.
  */
 public enum Category {

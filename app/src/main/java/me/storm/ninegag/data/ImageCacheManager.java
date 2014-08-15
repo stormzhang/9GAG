@@ -51,6 +51,7 @@ public class ImageCacheManager {
             public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
                 if (response.getBitmap() != null) {
                     if (!isImmediate && defaultImageDrawable != null) {
+                        // 如果成功响应，转换为正确图片
                         TransitionDrawable transitionDrawable = new TransitionDrawable(
                                 new Drawable[]{
                                         defaultImageDrawable,

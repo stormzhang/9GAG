@@ -57,6 +57,10 @@ public class Feed extends BaseModel {
         return feed;
     }
 
+    /**
+     * 用于 Gson，json 数据结构是：
+     * {"data":[...],"paging":{"next":"anXqvoz"}
+     */
     public static class FeedRequestData {
         public ArrayList<Feed> data;
         public Paging paging;

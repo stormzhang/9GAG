@@ -26,7 +26,6 @@ public class DrawerFragment extends BaseFragment {
 
     private MainActivity mActivity;
 
-
     public DrawerFragment() {
         // Required empty public constructor
     }
@@ -38,12 +37,12 @@ public class DrawerFragment extends BaseFragment {
         mListView = (ListView) contentView.findViewById(R.id.listView);
         mAdapter = new DrawerAdapter(mListView);
         mListView.setAdapter(mAdapter);
-        mListView.setItemChecked(0, true);
+        mListView.setItemChecked(0, true); // 设置默认选中第一项，true 保持选中的状态
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mListView.setItemChecked(position, true);
-                mActivity.setCategory(Category.values()[position]);
+                mActivity.setCategory(Category.values()[position]); //设置Category，并在此方法中改变装载 FeedsFragment
             }
         });
         return contentView;

@@ -38,7 +38,7 @@ public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
         mDownSampling = DEFAULT_DOWN_SAMPLING;
     }
 
-    public void onDrawerSlide(android.view.View drawerView, float slideOffset) {
+    public void onDrawerSlide(View drawerView, float slideOffset) {
         super.onDrawerSlide(drawerView, slideOffset);
         if (drawerView instanceof BaseFoldingLayout) {
             ((BaseFoldingLayout) drawerView).setFoldFactor(1 - slideOffset);
