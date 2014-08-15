@@ -11,7 +11,7 @@
 
 ## 安装
 
-apk文件夹下附带安装包，当然你也可以扫描二维码下载：
+apk文件夹下附带安装包，当然你也可以扫描二维码下载，运行环境4.0+
 
 ![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag_qrcode.png)
 
