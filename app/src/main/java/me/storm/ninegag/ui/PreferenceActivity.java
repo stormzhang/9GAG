@@ -15,18 +15,8 @@ public class PreferenceActivity extends SwipeBackActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preference);
-        getFragmentManager().beginTransaction().replace(R.id.container, new PreferenceFragment())
-                .commit();
         setTitle(R.string.action_settings);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            this.finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        getFragmentManager().beginTransaction().replace(android.R.id.content, new PreferenceFragment())
+                .commit();
     }
 }
