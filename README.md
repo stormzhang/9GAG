@@ -82,6 +82,9 @@ Android Studio(0.8.2) + Gradle(1.12)
 
 I will gladly accept pull requests for fixes and feature enhancements but please do them in the develop branch.
 
+## 感谢
+
+此项目在代码结构以及Sqlite的管理上很大部分借鉴了碎总的[Dribble](https://github.com/Issacw0ng/Dribbo)项目
 
 ## 关于我
 
