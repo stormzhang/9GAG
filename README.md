@@ -12,15 +12,19 @@ This a powerful REST Client of 9GAG unofficial which uses Android Studio + Gradl
 ## Run Environment
 
 min SDK verison 4.0+
+
 Android Studio version 1.0 final
+
 Gradle version 2.2.1
 
 ## Preview
 
-![9GAG](https://raw.github.com/stormzhang/9GAG/master/art/9gag_v1.2.png)
+![9GAG](http://ww4.sinaimg.cn/mw1024/af63c0e3gw1eg8ahf4b1yj21kw0szqc8.jpg)
+
+[Download Demo]()
 
 
-## Thanks to these open source projects
+## Open source projects
 
 * [Volley](https://android.googlesource.com/platform/frameworks/volley)
 
