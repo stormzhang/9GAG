@@ -11,6 +11,12 @@ android {
         versionCode 1
         versionName "1.0.0"
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    
     buildTypes {
         release {
             minifyEnabled false
@@ -26,11 +32,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     compile 'com.android.support:support-v4:21.0.2'
-
-    // AndroidStaggeredGrid https://github.com/etsy/AndroidStaggeredGrid
     compile 'com.etsy.android.grid:library:1.0.5'
-    // Shimmer-android https://github.com/RomainPiel/Shimmer-android
     compile project(':extras:ShimmerAndroid')
-    // FoldableLayout https://github.com/alexvasilkov/FoldableLayout
     compile 'com.alexvasilkov:foldable-layout:1.0.1'
 }
