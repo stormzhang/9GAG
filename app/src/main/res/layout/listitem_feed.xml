@@ -6,6 +6,8 @@
     android:background="@drawable/listitem_feed_selector"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
     android:padding="8dp">
 
     <TextView
