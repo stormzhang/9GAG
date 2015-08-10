@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -39,6 +40,8 @@ public class FeedsAdapter extends CursorAdapter {
 
     private Resources mResource;
 
+    private OnListItemClickListener mOnListItemClickListener;
+
     public FeedsAdapter(Context context, StaggeredGridView listView) {
         super(context, null, false);
         mResource = context.getResources();
@@ -67,11 +70,21 @@ public class FeedsAdapter extends CursorAdapter {
         view.setEnabled(!mListView.isItemChecked(cursor.getPosition()
                 + mListView.getHeaderViewsCount()));
 
-        Feed feed = Feed.fromCursor(cursor);
+        final Feed feed = Feed.fromCursor(cursor);
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
         holder.imageRequest = ImageCacheManager.loadImage(feed.images.normal, ImageCacheManager
                 .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable), 0, DensityUtils.dip2px(context, IMAGE_MAX_HEIGHT));
         holder.caption.setText(feed.caption);
+
+        holder.mContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mOnListItemClickListener != null){
+                    String imgUrl = feed.images.large;
+                    mOnListItemClickListener.onListItemClick(imgUrl);
+                }
+            }
+        });
     }
 
     private Holder getHolder(final View view) {
@@ -83,6 +96,14 @@ public class FeedsAdapter extends CursorAdapter {
         return holder;
     }
 
+    public OnListItemClickListener getOnListItemClickListener() {
+        return mOnListItemClickListener;
+    }
+
+    public void setOnListItemClickListener(OnListItemClickListener mOnListItemClickListener) {
+        this.mOnListItemClickListener = mOnListItemClickListener;
+    }
+
     static class Holder {
         @InjectView(R.id.iv_normal)
         ImageView image;
@@ -90,10 +111,18 @@ public class FeedsAdapter extends CursorAdapter {
         @InjectView(R.id.tv_caption)
         TextView caption;
 
+        @InjectView(R.id.list_container)
+        LinearLayout mContainer;
+
         public ImageLoader.ImageContainer imageRequest;
 
         public Holder(View view) {
             ButterKnife.inject(this, view);
         }
+    }
+
+
+    public static interface OnListItemClickListener{
+        void onListItemClick(String imgUrl);
     }
 }
