@@ -16,11 +16,29 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+
+    signingConfigs {
+        debug {
+            // No debug config
+        }
+        release {
+            storeFile file("../9gag.keystore")
+            storePassword "boohee"
+            keyAlias "9gag"
+            keyPassword "boohee"
+        }
+    }
     
     buildTypes {
+        debug {
+            versionNameSuffix "-debug"
+            signingConfig signingConfigs.debug
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            // signingConfig signingConfigs.release
         }
     }
     
