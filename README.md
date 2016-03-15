@@ -50,7 +50,7 @@ Gradle version 2.2.1
 
 ## More about me
 
-* [stormzhang](http://stormzhang.com/about.html)
+* [stormzhang](http://stormzhang.com/)
 
 License
 ============
