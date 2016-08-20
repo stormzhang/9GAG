@@ -9,25 +9,32 @@ In the directory/ [virtual machine](https://virtualenvwrapper.readthedocs.io/en/
 * Create a virtual env (optional)
 
         mkvirtualenv gistx-env
+        
+        workon gistx-env
+
+* Install 
+
+	install.cmd
     
-* Install requirements
+* Or    
+	* Install requirements
 
-		install pip3
-        pip3 install -r requirements.txt
+			install pip3
+	        pip3 install -r requirements.txt
 
 
     
-* Create DB
+	* Create DB
 
-        python manage.py migrate
+	        python manage.py migrate
 
-* Create Superuser
-
-        python manage.py createsuperuser      
+	* Create Superuser
+	
+	        python manage.py createsuperuser      
 		
-* Run server
+	* Run server
 
-        python manage.py runserver
+	        python manage.py runserver
         
 * Register the social application
  
