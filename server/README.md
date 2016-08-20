@@ -14,7 +14,7 @@ In the directory/ [virtual machine](https://virtualenvwrapper.readthedocs.io/en/
 
 * Install 
 
-	install.cmd
+		install.cmd
     
 * Or    
 	* Install requirements
