@@ -15,10 +15,7 @@ In the directory/ [virtual machine](https://virtualenvwrapper.readthedocs.io/en/
 		install pip3
         pip3 install -r requirements.txt
 
-* Create a `gistx/local_settings.py` file:
 
-        DEBUG = True
-        SECRET_KEY = "kjagfkafjhdgfgf"
     
 * Create DB
 
@@ -31,7 +28,10 @@ In the directory/ [virtual machine](https://virtualenvwrapper.readthedocs.io/en/
 * Run server
 
         python manage.py runserver
-
+        
+* Register the social application
+ 
+	`http://localhost:8000/admin/socialaccount/socialapp/`
 		
 ## routes
 ### get
