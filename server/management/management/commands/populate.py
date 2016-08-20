@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.core.management import BaseCommand
+from django.contrib.sites.models import Site
 # from emessages import console as emc
 # from tips import console as tc
 
@@ -7,16 +8,25 @@ from django.core.management import BaseCommand
 class Command(BaseCommand):
     @staticmethod
     def populate():
+        # setting the admin user
+        print("setting the admin user.")
         user = User.objects.create_superuser(
-            username="root",
-            email='root@example.com',
+            username="admin",
+            email='admin@gistx.com',
             password='123456789')
         user.full_clean()
         user.save()
-        # example of using the apps in our django
-        # emc.save_emessages(emc.get_wiki_http_errors())
-        # tc.save_tips(tc.load_tips_from_dlsv())
 
+
+        # setting the site name
+        print("setting the site name.")
+        site = Site.objects.all()[0]
+        site.domain = 'gistx.com'
+        site.name = 'WIP'
+        site.save()
+
+        # TODO: create a soical app
+        print("create a soical app (url in README file).")
 
 
     def handle(self, *args, **options):
