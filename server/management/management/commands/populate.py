@@ -8,25 +8,8 @@ from django.contrib.sites.models import Site
 class Command(BaseCommand):
     @staticmethod
     def populate():
-        # setting the admin user
-        print("setting the admin user.")
-        user = User.objects.create_superuser(
-            username="admin",
-            email='admin@gistx.com',
-            password='123456789')
-        user.full_clean()
-        user.save()
+        pass
 
-
-        # setting the site name
-        print("setting the site name.")
-        site = Site.objects.all()[0]
-        site.domain = 'gistx.com'
-        site.name = 'WIP'
-        site.save()
-
-        # TODO: create a soical app
-        print("create a soical app (url in README file).")
 
 
     def handle(self, *args, **options):
