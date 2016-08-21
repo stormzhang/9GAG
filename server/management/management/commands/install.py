@@ -7,7 +7,7 @@ from django.contrib.sites.models import Site
 
 class Command(BaseCommand):
     @staticmethod
-    def populate():
+    def install():
         # setting the admin user
         print("setting the admin user.")
         user = User.objects.create_superuser(
@@ -30,4 +30,4 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        self.populate()
+        self.install()
