@@ -15,42 +15,27 @@ Including another URLconf
 """
 from rest_framework import routers, serializers, viewsets
 from django.conf.urls import url, include
-
-from .models import Gist
-from . import views
+from django.contrib.auth.models import User
 
 
 # Serializers define the API representation.
-class GistSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Gist
-        fields = ('git_id',
-                  'self_url',
-                  'title',
-                  'owner_name',
-                  'owner_id',
-                  'recommended_gists',
-                  'script_url',
-                  'comments',
-                  'created_at',
-                  'updated_at',
-                  )
+        model = User
+        fields = ('url', 'username', 'email', 'is_staff')
 
 
 # ViewSets define the view behavior.
-class GistViewSet(viewsets.ModelViewSet):
-    queryset = Gist.objects.all()
-    serializer_class = GistSerializer
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'gists', GistViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
-    # url(r'/hot^$', views.hot),
-    # url(r'/fresh^$', views.fresh),
     # default
-    url(r'^api/', include(router.urls)),
-    url(r'^$', views.base),
+     url(r'^api/', include(router.urls)),
 ]
