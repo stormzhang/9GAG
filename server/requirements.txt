@@ -1,6 +1,9 @@
 defusedxml==0.4.1
 Django==1.10
 django-allauth==0.27.0
+django-filter==0.14.0
+djangorestframework==3.4.5
+Markdown==2.6.6
 oauthlib==1.1.2
 python3-openid==3.0.10
 requests==2.11.1
