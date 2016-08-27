@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by storm on 14-4-8.
  */
 public class DBHelper extends SQLiteOpenHelper {
-    // 数据库名
-    private static final String DB_NAME = "9gag.db";
+    // db name
+    private static final String DB_NAME = "gistx.db";
 
-    // 数据库版本
+    // db version
     private static final int VERSION = 1;
 
     public DBHelper(Context context) {

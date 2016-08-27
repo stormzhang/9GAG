@@ -25,6 +25,8 @@ import me.storm.ninegag.view.FoldingDrawerLayout;
  * Created by storm on 14-3-24.
  */
 public class MainActivity extends BaseActivity {
+
+    // ButterKnife annotation system http://www.vogella.com/tutorials/AndroidButterknife/article.html
     @InjectView(R.id.drawer_layout)
     FoldingDrawerLayout mDrawerLayout;
 
@@ -34,42 +36,62 @@ public class MainActivity extends BaseActivity {
     @InjectView(R.id.blur_image)
     ImageView blurImage;
 
+    // Drawer
     private BlurFoldingActionBarToggle mDrawerToggle;
 
+    //Fragment
     private FeedsFragment mContentFragment;
 
+    // The current chosen category
     private Category mCategory;
 
+    // Basic top right setting.
     private Menu mMenu;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // ButterKnife init (automates the views system)
         ButterKnife.inject(this);
 
+        // setting the icon
         actionBar.setIcon(R.drawable.ic_actionbar);
+
+        // setting the drawer color to the layout
         mDrawerLayout.setScrimColor(Color.argb(100, 255, 255, 255));
+
+        // setting the drawer
         mDrawerToggle = new BlurFoldingActionBarToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View view) {
                 super.onDrawerOpened(view);
+                // setting the title to our name (the categories are in the drawer)
                 setTitle(R.string.app_name);
+
+                // toggle the action_refresh
                 mMenu.findItem(R.id.action_refresh).setVisible(false);
             }
 
             @Override
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
+                // setting the correct category name to the title
                 setTitle(mCategory.getDisplayName());
+                // toggle the action_refresh
                 mMenu.findItem(R.id.action_refresh).setVisible(true);
 
+                // ?
                 blurImage.setVisibility(View.GONE);
                 blurImage.setImageBitmap(null);
             }
         };
+
+        // animating the background blur
         mDrawerToggle.setBlurImageAndView(blurImage, contentLayout);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+        //  start the page. (where the magic happens)
         setCategory(Category.hot);
         replaceFragment(R.id.left_drawer, new DrawerFragment());
     }
