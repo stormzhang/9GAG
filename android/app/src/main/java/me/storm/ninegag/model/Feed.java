@@ -19,7 +19,7 @@ public class Feed extends BaseModel {
     public String id;
     public String caption;
     public String link;
-    public Image images;
+    public String gist;
     public Vote votes;
 
     public class Image {

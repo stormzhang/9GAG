@@ -72,7 +72,7 @@ public class FeedsAdapter extends CursorAdapter {
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
 
         holder.caption.setText(feed.caption);
-        holder.gist.setText(Html.fromHtml("<h2>Title</h2><br><p>Description here</p>"));
+        holder.gist.setText(Html.fromHtml(feed.gist));
     }
 
     private Holder getHolder(final View view) {
