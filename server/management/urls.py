@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from rest_framework import routers, serializers, viewsets
+from rest_framework import serializers, viewsets
 from django.conf.urls import url, include
 from django.contrib.auth.models import User
 
@@ -31,11 +31,5 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-# Routers provide an easy way of automatically determining the URL conf.
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-
 urlpatterns = [
-    # default
-     url(r'^api/', include(router.urls)),
 ]
