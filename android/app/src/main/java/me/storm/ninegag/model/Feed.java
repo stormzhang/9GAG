@@ -2,6 +2,7 @@ package me.storm.ninegag.model;
 
 import android.database.Cursor;
 import android.media.Image;
+import android.text.Html;
 
 import com.google.gson.Gson;
 
@@ -19,7 +20,7 @@ public class Feed extends BaseModel {
     public String id;
     public String caption;
     public String link;
-    public String gist="sdfgadsfgadfgadfg";
+    public String gist;
     public Vote votes;
 
     public class Image {
@@ -46,6 +47,7 @@ public class Feed extends BaseModel {
 
     public static Feed fromCursor(Cursor cursor) {
         String id = cursor.getString(cursor.getColumnIndex(FeedsDataHelper.FeedsDBInfo.ID));
+
         Feed feed = getFromCache(id);
         if (feed != null) {
             return feed;
@@ -67,6 +69,7 @@ public class Feed extends BaseModel {
     }
 
     private class Paging {
+
         public String next;
     }
 }
