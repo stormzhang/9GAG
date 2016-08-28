@@ -96,19 +96,19 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String imageUrl = mAdapter.getItem(position - gridView.getHeaderViewsCount()).images.large;
+               // String imageUrl = mAdapter.getItem(position - gridView.getHeaderViewsCount()).images.large;
                 Intent intent = new Intent(getActivity(), ImageViewActivity.class);
-                intent.putExtra(ImageViewActivity.IMAGE_URL, imageUrl);
+                intent.putExtra(ImageViewActivity.IMAGE_URL, "CHANGE HERE!!!!!!!!!!");
                 startActivity(intent);
             }
         });
 
         initActionBar();
         mSwipeLayout.setOnRefreshListener(this);
-        mSwipeLayout.setColorScheme(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
+       // mSwipeLayout.setColorScheme(android.R.color.holo_blue_bright,
+        //        android.R.color.holo_green_light,
+        //        android.R.color.holo_orange_light,
+        //        android.R.color.holo_red_light);
 
         getLoaderManager().initLoader(0, null, this);
         loadFirst();
