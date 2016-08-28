@@ -18,10 +18,10 @@
     <WebView
         android:id="@+id/iv_normal"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:minHeight="200dp"
+        android:layout_height="400dp"
+        android:minHeight="400dp"
         android:background="#c9c9c9"
         android:scaleType="centerCrop"
-        android:translationZ="5dp" />
+        android:translationZ="10dp" />
 
 </LinearLayout>
