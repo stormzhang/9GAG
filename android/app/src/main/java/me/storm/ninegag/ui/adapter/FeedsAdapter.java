@@ -72,6 +72,8 @@ public class FeedsAdapter extends CursorAdapter {
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
 
         holder.caption.setText(feed.caption);
+
+        //TODO: here you set the html for all scroll views
         holder.gist.setText(Html.fromHtml("<h2>Title</h2><br><p>Description here</p>"));
     }
 
