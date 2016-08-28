@@ -41,7 +41,8 @@ class Gist(models.Model):
             "git_id": json_item['id'],
             "title": json_item['description'],
             "self_url": json_item['url'],
-
+            "script_url": '<script src="https://gist.github.com/{}.js"></script>'.format(
+                json_item['id']),
             "comments": str(json_item['comments']),
             # "files_words": "",
             # "size = mode": "",
@@ -63,8 +64,8 @@ class Gist(models.Model):
         # "owner_id": "",
         # "recommended_gists": "",
         # "script_url": "",
-        item = Gist(**kwargs)
-        item.save()
+        Gist.objects.update_or_create(
+                git_id=json_item['id'], defaults=kwargs)
 
     @staticmethod
     def validate_github_api(json_item):
