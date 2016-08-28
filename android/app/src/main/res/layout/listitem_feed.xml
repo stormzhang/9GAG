@@ -15,7 +15,7 @@
         android:textSize="20sp"
         android:textStyle="normal" />
 
-    <ImageView
+    <TextView
         android:id="@+id/iv_normal"
         android:layout_width="match_parent"
         android:layout_height="200dp"

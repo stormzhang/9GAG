@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.widget.CursorAdapter;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,9 +70,9 @@ public class FeedsAdapter extends CursorAdapter {
 
         Feed feed = Feed.fromCursor(cursor);
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
-        holder.imageRequest = ImageCacheManager.loadImage(feed.images.normal, ImageCacheManager
-                .getImageListener(holder.image, mDefaultImageDrawable, mDefaultImageDrawable), 0, DensityUtils.dip2px(context, IMAGE_MAX_HEIGHT));
+
         holder.caption.setText(feed.caption);
+        holder.gist.setText(Html.fromHtml("<h2>Title</h2><br><p>Description here</p>"));
     }
 
     private Holder getHolder(final View view) {
@@ -85,7 +86,7 @@ public class FeedsAdapter extends CursorAdapter {
 
     static class Holder {
         @InjectView(R.id.iv_normal)
-        ImageView image;
+        TextView gist;
 
         @InjectView(R.id.tv_caption)
         TextView caption;
