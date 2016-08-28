@@ -98,6 +98,8 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                // String imageUrl = mAdapter.getItem(position - gridView.getHeaderViewsCount()).images.large;
                 Intent intent = new Intent(getActivity(), ImageViewActivity.class);
+
+                //TODO: here you set the HTML sent to the individual page
                 intent.putExtra(ImageViewActivity.IMAGE_URL, "CHANGE HERE!!!!!!!!!!");
                 startActivity(intent);
             }
