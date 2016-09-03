@@ -17,28 +17,24 @@ import me.storm.ninegag.dao.FeedsDataHelper;
 public class Feed extends BaseModel {
     private static final HashMap<String, Feed> CACHE = new HashMap<String, Feed>();
 
-    public String id;
-    public String caption;
-    public String link;
-    public String gist;
-    public Vote votes;
+    public String git_id;
+    public String self_url;
+    public String title;
+    public String owner_name;
+    public String owner_id;
+    public String recommended_gists;
+    public String script_url;
+    public String comments;
+    public String created_at;
+    public String updated_at;
 
-    public class Image {
-        public String small;
-        public String normal;
-        public String large;
-    }
-
-    private class Vote {
-        public int count;
-    }
 
     private static void addToCache(Feed feed) {
-        CACHE.put(feed.id, feed);
+        CACHE.put(feed.git_id, feed);
     }
 
-    private static Feed getFromCache(String id) {
-        return CACHE.get(id);
+    private static Feed getFromCache(String git_id) {
+        return CACHE.get(git_id);
     }
 
     public static Feed fromJson(String json) {
@@ -59,17 +55,9 @@ public class Feed extends BaseModel {
         return feed;
     }
 
-    public static class FeedRequestData {
-        public ArrayList<Feed> data;
-        public Paging paging;
-
+    public static class FeedRequestData extends ArrayList<Feed> {
         public String getPage() {
-            return paging.next;
+            return  this.get(this.size() -1).updated_at;
         }
-    }
-
-    private class Paging {
-
-        public String next;
     }
 }

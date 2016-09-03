@@ -20,7 +20,6 @@ import com.etsy.android.grid.StaggeredGridView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.storm.ninegag.R;
-import me.storm.ninegag.data.ImageCacheManager;
 import me.storm.ninegag.model.Feed;
 import me.storm.ninegag.util.DensityUtils;
 
@@ -72,7 +71,7 @@ public class FeedsAdapter extends CursorAdapter {
         Feed feed = Feed.fromCursor(cursor);
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
 
-        holder.caption.setText(feed.caption);
+        holder.caption.setText(feed.title);
         //TODO: here you set the html for all scroll views
         holder.gist.loadData("" +
                 "<body><p>Live Gist example in html</p><script src=\"https://gist.github.com/d95d5429655c1123ddca8730d5e8dc9f.js\"></script><link rel=\"stylesheet\" href=\"https://assets-cdn.github.com/assets/gist-embed-b03925b9c18fa42b22f168e7d17a7ca70ca50a4126cbfca9f91a1a8bc79b5905.css\"><div id=\"gist39255888\" class=\"gist\">" +

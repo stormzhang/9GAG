@@ -1,5 +1,7 @@
 package me.storm.ninegag.data;
 
+import android.util.Log;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
@@ -48,13 +50,21 @@ public class GsonRequest<T> extends Request<T> {
     @Override
     protected Response<T> parseNetworkResponse(NetworkResponse response) {
         try {
+            Log.i("Gson request", "try: " + response.toString());
+            // the Json response
             String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            // Parse all the feeds data (magic)
             return Response.success(mGson.fromJson(json, mClazz),
                     HttpHeaderParser.parseCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
+            Log.e("Gson request","UnsupportedEncodingException ~ " + e.toString());
+
             return Response.error(new ParseError(e));
         } catch (JsonSyntaxException e) {
+            Log.e("Gson request","JsonSyntaxException ~ "+ e.toString());
             return Response.error(new ParseError(e));
         }
     }
+
+
 }

@@ -34,7 +34,7 @@ public class FeedsDataHelper extends BaseDataHelper {
 
     private ContentValues getContentValues(Feed feed) {
         ContentValues values = new ContentValues();
-        values.put(FeedsDBInfo.ID, feed.id);
+        values.put(FeedsDBInfo.ID, feed.git_id);
         values.put(FeedsDBInfo.CATEGORY, mCategory.ordinal());
         values.put(FeedsDBInfo.JSON, feed.toJson());
         return values;

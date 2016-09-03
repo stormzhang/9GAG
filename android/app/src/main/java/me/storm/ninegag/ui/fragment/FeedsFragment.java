@@ -152,7 +152,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
                             mDataHelper.deleteAll();
                         }
                         mPage = response.getPage();
-                        ArrayList<Feed> feeds = response.data;
+                        ArrayList<Feed> feeds = response;
                         mDataHelper.bulkInsert(feeds);
                         return null;
                     }
