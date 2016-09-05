@@ -21,7 +21,6 @@
         android:layout_height="400dp"
         android:minHeight="400dp"
         android:background="#c9c9c9"
-        android:scaleType="centerCrop"
         android:translationZ="10dp" />
 
 </LinearLayout>
