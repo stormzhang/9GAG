@@ -33,7 +33,7 @@ public class Feed extends BaseModel {
         CACHE.put(feed.git_id, feed);
     }
 
-    private static Feed getFromCache(String git_id) {
+    public static Feed getFromCache(String git_id) {
         return CACHE.get(git_id);
     }
 

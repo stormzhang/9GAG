@@ -4,24 +4,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <uk.co.senab.photoview.PhotoView
-            android:id="@+id/photoView"
+        <WebView
+            android:id="@+id/webView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center" />
+            android:layout_height="400dp"
+            android:minHeight="400dp"
+            android:background="#c9c9c9"
+            android:translationZ="10dp" />
 
-        <me.storm.ninegag.view.ProgressWheel xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/progressWheel"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            ProgressWheel:barColor="#339BB9"
-            ProgressWheel:barWidth="4dp"
-            ProgressWheel:rimColor="#44000000"
-            ProgressWheel:rimWidth="4dp"
-            ProgressWheel:spinSpeed="3dp"
-            ProgressWheel:textColor="#222222"
-            ProgressWheel:textSize="14sp" />
 
     </FrameLayout>
 

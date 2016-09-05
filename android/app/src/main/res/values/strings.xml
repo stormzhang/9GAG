@@ -9,7 +9,7 @@
     <string name="loading">Loading</string>
     <string name="the_end">TheEnd</string>
     <string name="action_refresh">Refresh</string>
-    <string name="view_big_image">View Image</string>
+    <string name="view_big_image">View Gist</string>
 
     <string name="pref_app_des">全球有名的搞笑图片分享社区</string>
     <string name="pref_summary_dev">Developer</string>

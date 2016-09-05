@@ -69,6 +69,7 @@ public class FeedsAdapter extends CursorAdapter {
                 + mListView.getHeaderViewsCount()));
 
         Feed feed = Feed.fromCursor(cursor);
+        holder.git_id=feed.git_id;
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
 
         holder.caption.setText(feed.title);
@@ -89,10 +90,11 @@ public class FeedsAdapter extends CursorAdapter {
         return holder;
     }
 
-    static class Holder {
+    public static class Holder {
         @InjectView(R.id.iv_normal)
         WebView gist;
 
+        public String git_id="";
         @InjectView(R.id.tv_caption)
         TextView caption;
 
