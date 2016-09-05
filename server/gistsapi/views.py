@@ -32,18 +32,28 @@ class GistSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class GistViewSet(viewsets.ModelViewSet):
-    def filter_queryset(self, queryset):
-        if not self.request.GET:
-            return super(GistViewSet, self).filter_queryset(queryset)
-        query_string = self.request.GET
-        if query_string['category'] == 'fresh':
-            return super(GistViewSet, self).filter_queryset(queryset.order_by('updated_at').reverse())
-        if query_string['category'] == 'hot':
-            return super(GistViewSet, self).filter_queryset(
-                queryset.filter(comments__gte=0).order_by('comments').reverse())
-        if query_string['category'] == 'trending':
-            pass
+    PAGE_LIMIT = 10
 
+    def filter_queryset(self, queryset):
+        # Getting the arguments.
+        query_string = self.request.GET
+        if 'page' in query_string:
+            # this why the user scrolls back in time but in the relevant updated gists (lower then).
+            queryset = queryset.filter(updated_at__lt=query_string['page'])
+        # Setting the category.
+        if 'category' in query_string:
+            if query_string['category'] == 'fresh':
+                # base behavior
+                pass
+            elif query_string['category'] == 'hot':
+                # see the most commented.
+                queryset = queryset.filter(comments__gte=0)
+            elif query_string['category'] == 'trending':
+                # TODO: implament
+                queryset = queryset.filter(comments__gte=10)
+
+        # hack paging with updated_at and PAGE_LIMIT
+        queryset = queryset.order_by('updated_at').reverse()[:self.PAGE_LIMIT]
         return super(GistViewSet, self).filter_queryset(queryset)
 
     queryset = Gist.objects.all()
@@ -54,5 +64,3 @@ class GistViewSet(viewsets.ModelViewSet):
 def base(request):
     # TODO: Json response
     return HttpResponse("Hello.")
-
-	
