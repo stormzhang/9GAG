@@ -57,7 +57,10 @@ public class Feed extends BaseModel {
 
     public static class FeedRequestData extends ArrayList<Feed> {
         public String getPage() {
-            return  this.get(this.size() -1).updated_at;
+            if(!this.isEmpty()){
+                return  this.get(this.size() -1).updated_at;
+            }
+            return "-1";
         }
     }
 }

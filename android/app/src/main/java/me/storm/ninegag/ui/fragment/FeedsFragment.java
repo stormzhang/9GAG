@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.storm.ninegag.App;
 import me.storm.ninegag.R;
-import me.storm.ninegag.api.GagApi;
+import me.storm.ninegag.api.GisterApi;
 import me.storm.ninegag.dao.FeedsDataHelper;
 import me.storm.ninegag.data.GsonRequest;
 import me.storm.ninegag.model.Category;
@@ -96,10 +96,10 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               // String imageUrl = mAdapter.getItem(position - gridView.getHeaderViewsCount()).images.large;
+                // String imageUrl = mAdapter.getItem(position - gridView.getHeaderViewsCount()).images.large;
                 Intent intent = new Intent(getActivity(), ImageViewActivity.class);
 
-                FeedsAdapter.Holder holder =(FeedsAdapter.Holder) view.getTag();
+                FeedsAdapter.Holder holder = (FeedsAdapter.Holder) view.getTag();
 
                 //TODO: here you set the HTML sent to the individual page
                 intent.putExtra(ImageViewActivity.IMAGE_URL, holder.git_id);
@@ -109,7 +109,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
 
         initActionBar();
         mSwipeLayout.setOnRefreshListener(this);
-       // mSwipeLayout.setColorScheme(android.R.color.holo_blue_bright,
+        // mSwipeLayout.setColorScheme(android.R.color.holo_blue_bright,
         //        android.R.color.holo_green_light,
         //        android.R.color.holo_orange_light,
         //        android.R.color.holo_red_light);
@@ -139,7 +139,9 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
         if (!mSwipeLayout.isRefreshing() && ("0".equals(next))) {
             setRefreshing(true);
         }
-        executeRequest(new GsonRequest(String.format(GagApi.LIST, mCategory.name(), next), Feed.FeedRequestData.class, responseListener(), errorListener()));
+        String url = GisterApi.buildRequest(mCategory.getDisplayName(),
+                (("0".equals(next) ? "" : next)));
+        executeRequest(new GsonRequest(url, Feed.FeedRequestData.class, responseListener(), errorListener()));
     }
 
     private Response.Listener<Feed.FeedRequestData> responseListener() {
@@ -190,7 +192,9 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
     }
 
     private void loadNext() {
-        loadData(mPage);
+        if (!mPage.equals("-1")) {
+            loadData(mPage);
+        }
     }
 
     public void loadFirstAndScrollToTop() {

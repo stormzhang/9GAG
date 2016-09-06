@@ -11,8 +11,6 @@
             android:minHeight="400dp"
             android:background="#c9c9c9"
             android:translationZ="10dp" />
-
-
     </FrameLayout>
 
 </merge>
