@@ -6,12 +6,10 @@ import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.widget.CursorAdapter;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -21,7 +19,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.storm.ninegag.R;
 import me.storm.ninegag.model.Feed;
-import me.storm.ninegag.util.DensityUtils;
 
 
 /**
@@ -69,14 +66,15 @@ public class FeedsAdapter extends CursorAdapter {
                 + mListView.getHeaderViewsCount()));
 
         Feed feed = Feed.fromCursor(cursor);
-        holder.git_id=feed.git_id;
+        holder.git_id = feed.git_id;
         mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
 
         holder.caption.setText(feed.title);
         //TODO: here you set the html for all scroll views
         holder.gist.clearCache(true);
         holder.gist.clearHistory();
-        holder.gist.getSettings().setJavaScriptEnabled(true);
+
+        holder.gist.loadUrl("about:blank");
         // holder.gist.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         holder.gist.loadData(feed.script_url, "", "utf-8");
     }
@@ -94,7 +92,7 @@ public class FeedsAdapter extends CursorAdapter {
         @InjectView(R.id.iv_normal)
         WebView gist;
 
-        public String git_id="";
+        public String git_id = "";
         @InjectView(R.id.tv_caption)
         TextView caption;
 
@@ -102,6 +100,7 @@ public class FeedsAdapter extends CursorAdapter {
 
         public Holder(View view) {
             ButterKnife.inject(this, view);
+            gist.getSettings().setJavaScriptEnabled(true);
         }
     }
 }

@@ -1,9 +1,6 @@
 package me.storm.ninegag.model;
 
 import android.database.Cursor;
-import android.media.Image;
-import android.text.Html;
-
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

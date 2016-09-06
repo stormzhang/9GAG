@@ -8,7 +8,8 @@ public class GisterApi {
 
     public static String buildRequest(String category, String page) {
         String queryString = "?";
-        category += category.isEmpty() ? "" : "category=" + category;
+        category = category.isEmpty() ? "" : "category=" + category;
+        page = page.isEmpty() ? "" : "page=" + page;
         queryString += !category.isEmpty() && !page.isEmpty() ? category + "&" + page : category + page;
         return HOST + (("?".equals(queryString)) ? "" : queryString);
     }

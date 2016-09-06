@@ -7,7 +7,7 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="drawer_bg">#FFFFFFcc</color>
-
+    <color name="transparent">#0033b500</color>
     <color name="holo_blue_light">#3333b5e5</color>
     <color name="holo_green_light">#3399cc00</color>
     <color name="holo_red_light">#33ff4444</color>

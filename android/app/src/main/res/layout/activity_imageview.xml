@@ -7,10 +7,8 @@
         <WebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:minHeight="400dp"
-            android:background="#c9c9c9"
-            android:translationZ="10dp" />
+            android:layout_height="match_parent"
+            android:background="#c9c9c9" />
     </FrameLayout>
 
 </merge>
