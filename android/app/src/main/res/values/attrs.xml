@@ -5,7 +5,7 @@
     </declare-styleable>
 
     <declare-styleable name="ProgressWheel">
-        <attr name="progress" format="string" />
+        <attr name="progresss" format="string" />
         <attr name="textColor" format="color" />
         <attr name="textSize" format="dimension" />
         <attr name="barColor" format="color" />

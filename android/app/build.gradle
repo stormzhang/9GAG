@@ -50,6 +50,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     compile project(':extras:ShimmerAndroid')
+    compile rootProject.ext.dependencies["bootstrap"]
     compile rootProject.ext.dependencies["support-v4"]
     compile rootProject.ext.dependencies["foldable-layout"]
     compile rootProject.ext.dependencies["etsy-grid"]

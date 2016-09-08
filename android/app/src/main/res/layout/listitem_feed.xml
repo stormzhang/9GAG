@@ -1,24 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/transparent"
     android:descendantFocusability="blocksDescendants"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_caption"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="@dimen/title_text_size"
+        android:padding="@dimen/feed_margin"
         android:textStyle="normal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/feed_margin_deep"
+        android:layout_marginLeft="@dimen/feed_margin_deep"
+        android:layout_marginRight="@dimen/feed_margin_deep"
+        android:contextClickable="false"
+        android:focusable="true">
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="secondary"
+            app:fontAwesomeIcon="fa_code_fork"
+            app:bootstrapSize="md"
+            app:roundedCorners="true"
+            >
+
+        </com.beardedhen.androidbootstrap.BootstrapButton>
+    </RelativeLayout>
 
     <WebView
         android:id="@+id/iv_normal"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:background="#c9c9c9"
+        android:background="@color/transparent"
         android:minHeight="400dp" />
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/holo_purple_light"
+        ></View>
+
 </LinearLayout>

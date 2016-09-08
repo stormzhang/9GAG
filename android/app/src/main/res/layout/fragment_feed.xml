@@ -2,7 +2,7 @@
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/swipe_container"
     android:layout_width="match_parent"
-    android:background="@color/holo_blue_light"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <me.storm.ninegag.view.PageStaggeredGridView xmlns:app="http://schemas.android.com/apk/res-auto"

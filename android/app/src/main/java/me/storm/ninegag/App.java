@@ -3,6 +3,7 @@ package me.storm.ninegag;
 import android.app.Application;
 import android.content.Context;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -19,21 +20,11 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
-        initImageLoader(getApplicationContext());
+        TypefaceProvider.registerDefaultIconSets();
     }
 
     public static Context getContext() {
         return sContext;
     }
 
-    // 初始化ImageLoader
-    public static void initImageLoader(Context context) {
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
-                .threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory()
-                .memoryCache(new LruMemoryCache(2 * 1024 * 1024)).discCacheSize(10 * 1024 * 1024)
-                .discCacheFileNameGenerator(new Md5FileNameGenerator())
-                .tasksProcessingOrder(QueueProcessingType.LIFO)
-                .build();
-        ImageLoader.getInstance().init(config);
-    }
 }
