@@ -1,14 +1,68 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
 
-    <FrameLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contextClickable="false"
+            android:focusable="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/relativeLayout">
+
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/fork_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="secondary"
+                app:bootstrapSize="lg"
+                app:fontAwesomeIcon="fa_code_fork"
+                app:roundedCorners="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/eye_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="secondary"
+                app:bootstrapSize="lg"
+                app:fontAwesomeIcon="fa_eye"
+                app:roundedCorners="true"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/share_page"
+                android:layout_toEndOf="@+id/share_page" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/share_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="secondary"
+                app:bootstrapSize="lg"
+                app:fontAwesomeIcon="fa_share_alt"
+                app:roundedCorners="true"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/fork_page"
+                android:layout_toEndOf="@+id/fork_page" />
+
+        </RelativeLayout>
         <WebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#c9c9c9" />
-    </FrameLayout>
+            android:background="#c9c9c9"
+            android:layout_below="@+id/relativeLayout" />
+    </RelativeLayout>
 
-</merge>
+</LinearLayout>

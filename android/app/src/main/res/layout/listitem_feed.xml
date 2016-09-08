@@ -8,33 +8,66 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_caption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/title_text_size"
-        android:padding="@dimen/feed_margin"
-        android:textStyle="normal" />
-
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/feed_margin_deep"
-        android:layout_marginLeft="@dimen/feed_margin_deep"
-        android:layout_marginRight="@dimen/feed_margin_deep"
-        android:contextClickable="false"
-        android:focusable="true">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bootstrapBrand="secondary"
-            app:fontAwesomeIcon="fa_code_fork"
-            app:bootstrapSize="md"
-            app:roundedCorners="true"
-            />
+            android:contextClickable="false"
+            android:focusable="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/relativeLayout">
 
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/fork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="secondary"
+                app:bootstrapSize="lg"
+                app:fontAwesomeIcon="fa_code_fork"
+                app:roundedCorners="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/eye"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="secondary"
+                app:bootstrapSize="lg"
+                app:fontAwesomeIcon="fa_eye"
+                app:roundedCorners="true"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/share"
+                android:layout_toEndOf="@+id/share" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="secondary"
+                app:bootstrapSize="lg"
+                app:fontAwesomeIcon="fa_share_alt"
+                app:roundedCorners="true"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/fork"
+                android:layout_toEndOf="@+id/fork" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_caption"
+            android:layout_width="163dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="normal"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/relativeLayout"
+            android:layout_toStartOf="@+id/relativeLayout" />
     </RelativeLayout>
 
     <WebView
@@ -45,11 +78,13 @@
         android:minHeight="400dp" />
 
 
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/holo_purple_light"
-        ></View>
+        android:background="@color/holo_purple_light"></View>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
 
 </LinearLayout>

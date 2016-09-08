@@ -101,7 +101,7 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
 
                 FeedsAdapter.Holder holder = (FeedsAdapter.Holder) view.getTag();
 
-                //TODO: here you set the HTML sent to the individual page
+
                 intent.putExtra(ImageViewActivity.IMAGE_URL, holder.git_id);
                 startActivity(intent);
             }

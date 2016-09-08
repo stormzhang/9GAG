@@ -1,22 +1,27 @@
 package me.storm.ninegag.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.widget.CursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.etsy.android.grid.StaggeredGridView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import me.storm.ninegag.R;
 import me.storm.ninegag.model.Feed;
 
@@ -58,19 +63,16 @@ public class FeedsAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         Holder holder = getHolder(view);
-        if (holder.imageRequest != null) {
-            holder.imageRequest.cancelRequest();
-        }
+
 
         view.setEnabled(!mListView.isItemChecked(cursor.getPosition()
                 + mListView.getHeaderViewsCount()));
 
         Feed feed = Feed.fromCursor(cursor);
         holder.git_id = feed.git_id;
-        mDefaultImageDrawable = new ColorDrawable(mResource.getColor(COLORS[cursor.getPosition() % COLORS.length]));
 
         holder.caption.setText(feed.title);
-        //TODO: here you set the html for all scroll views
+
         holder.gist.clearCache(true);
         holder.gist.clearHistory();
 
@@ -96,7 +98,24 @@ public class FeedsAdapter extends CursorAdapter {
         @InjectView(R.id.tv_caption)
         TextView caption;
 
-        public ImageLoader.ImageContainer imageRequest;
+        @InjectView(R.id.fork)
+        BootstrapButton fork_button;
+
+        @InjectView(R.id.share)
+        BootstrapButton share_button;
+
+        @InjectView(R.id.eye)
+        BootstrapButton eye_button;
+
+        @OnClick(R.id.fork) void forkOnClick() {
+            Log.e("FeedsAdapter - Holder","fork onclick");
+        }
+        @OnClick(R.id.share) void shareOnClick() {
+            Log.e("FeedsAdapter - Holder","share onclick");
+        }
+        @OnClick(R.id.eye) void eyeOnClick() {
+            Log.e("FeedsAdapter - Holder","eye onclick");
+        }
 
         public Holder(View view) {
             ButterKnife.inject(this, view);
