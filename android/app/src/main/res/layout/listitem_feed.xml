@@ -33,9 +33,8 @@
             app:fontAwesomeIcon="fa_code_fork"
             app:bootstrapSize="md"
             app:roundedCorners="true"
-            >
+            />
 
-        </com.beardedhen.androidbootstrap.BootstrapButton>
     </RelativeLayout>
 
     <WebView
