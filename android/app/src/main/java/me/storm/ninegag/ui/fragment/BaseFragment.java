@@ -15,8 +15,8 @@ import me.storm.ninegag.util.ToastUtils;
 public abstract class BaseFragment extends Fragment {
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onStop() {
+        super.onStop();
         RequestManager.cancelAll(this);
     }
 
