@@ -9,7 +9,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 # Serializers define the API representation.
 from rest_framework import serializers, viewsets
-
 # ViewSets define the view behavior.
 from .models import Gist
 
@@ -60,3 +59,10 @@ class GistViewSet(viewsets.ModelViewSet):
     serializer_class = GistSerializer
 
 
+# Send user to register.
+@login_required()
+def home(request):
+    username = request.user.username
+    # Authenticated user.. say hello.
+    # TODO: go back to app.
+    return HttpResponse("Hello {}".format(username))

@@ -19,9 +19,9 @@ from django.conf.urls import url, include
 from .models import Gist
 from . import views
 
-
 urlpatterns = [
     # url(r'/hot^$', views.hot),
     # url(r'/fresh^$', views.fresh),
     # default
+    url(r'^$', views.home),
 ]

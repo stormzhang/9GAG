@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^api/', include(router.urls)),
-    # url(r'^', include('gistsapi.urls')),
+    url(r'^', include('gistsapi.urls')),
      url(r'^login/', include('login.urls')),
 ]
 
