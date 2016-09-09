@@ -5,13 +5,13 @@ package me.storm.ninegag.model;
  */
 public enum Category {
     hot("hot"), trending("trending"), fresh("fresh");
-    private String mDisplayName;
+    private String mName;
 
     Category(String displayName) {
-        mDisplayName = displayName;
+        mName = displayName;
     }
 
     public String getDisplayName() {
-        return mDisplayName;
+        return mName;
     }
 }

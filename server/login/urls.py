@@ -18,7 +18,7 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-
+    url(r'^complete/$', views.complete),
 ]
 
 

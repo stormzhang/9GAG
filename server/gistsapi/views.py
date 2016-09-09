@@ -60,7 +60,3 @@ class GistViewSet(viewsets.ModelViewSet):
     serializer_class = GistSerializer
 
 
-@login_required(login_url='/')
-def base(request):
-    # TODO: Json response
-    return HttpResponse("Hello.")

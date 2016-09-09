@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^api/', include(router.urls)),
     # url(r'^', include('gistsapi.urls')),
-    # url(r'^', include('management.urls')),
+     url(r'^login/', include('login.urls')),
 ]
 
 

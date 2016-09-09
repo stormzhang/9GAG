@@ -24,5 +24,4 @@ urlpatterns = [
     # url(r'/hot^$', views.hot),
     # url(r'/fresh^$', views.fresh),
     # default
-    url(r'^$', views.base),
 ]
