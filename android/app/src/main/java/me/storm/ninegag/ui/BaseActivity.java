@@ -56,7 +56,7 @@ public abstract class BaseActivity extends FragmentActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-            case R.id.action_settings:
+            case R.id.action_profile:
                 startActivity(new Intent(this, PreferenceActivity.class));
                 return true;
             default:
