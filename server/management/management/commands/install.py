@@ -1,6 +1,9 @@
+
 from django.contrib.auth.models import User
 from django.core.management import BaseCommand
 from django.contrib.sites.models import Site
+from allauth.socialaccount.models import SocialApp
+from gistx.settings import GITHUB_APP_ID, GITHUB_API_SECRET
 # from emessages import console as emc
 # from tips import console as tc
 
@@ -25,8 +28,16 @@ class Command(BaseCommand):
         site.name = 'WIP'
         site.save()
 
-        # TODO: create a soical app
-        print("create a soical app (url in README file).")
+        # setting the site Social applications
+        print("setting the Social applications .")
+        social_app = SocialApp()
+        social_app.provider = "github"
+        social_app.name = "github provider"
+        social_app.client_id =GITHUB_APP_ID
+        social_app.secret = GITHUB_API_SECRET
+        social_app.save()
+        social_app.sites.add(site)
+        social_app.save()
 
 
     def handle(self, *args, **options):
