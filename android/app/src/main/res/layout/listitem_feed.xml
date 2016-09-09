@@ -13,49 +13,102 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contextClickable="false"
-            android:focusable="true"
             android:layout_alignParentRight="true"
-            android:id="@+id/relativeLayout">
+            android:contextClickable="false"
+            android:focusable="true">
 
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/fork"
+            <RelativeLayout
+                android:id="@+id/fork_wrapper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bootstrapBrand="secondary"
-                app:bootstrapSize="lg"
-                app:fontAwesomeIcon="fa_code_fork"
-                app:roundedCorners="true"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true">
 
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/eye"
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/fork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bootstrapBrand="secondary"
+                    app:bootstrapSize="lg"
+                    app:fontAwesomeIcon="fa_code_fork"
+                    app:roundedCorners="true" />
+
+                <TextView
+                    android:id="@+id/fork_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/fork"
+                    android:layout_alignTop="@id/fork"
+                    android:background="@drawable/badge_circle"
+                    android:text="111"
+                    android:textColor="#000"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/eye_wrapper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bootstrapBrand="secondary"
-                app:bootstrapSize="lg"
-                app:fontAwesomeIcon="fa_eye"
-                app:roundedCorners="true"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/share"
-                android:layout_toEndOf="@+id/share" />
+                android:layout_toEndOf="@+id/share_wrapper"
+                android:layout_toRightOf="@+id/share_wrapper">
 
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/share"
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bootstrapBrand="secondary"
+                    app:bootstrapSize="lg"
+                    app:fontAwesomeIcon="fa_eye"
+                    app:roundedCorners="true" />
+
+                <TextView
+                    android:id="@+id/eye_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/eye"
+                    android:layout_alignTop="@id/eye"
+                    android:background="@drawable/badge_circle"
+                    android:text="23"
+                    android:textColor="#000"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/share_wrapper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bootstrapBrand="secondary"
-                app:bootstrapSize="lg"
-                app:fontAwesomeIcon="fa_share_alt"
-                app:roundedCorners="true"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/fork"
-                android:layout_toEndOf="@+id/fork" />
+                android:layout_toEndOf="@+id/fork_wrapper"
+                android:layout_toRightOf="@+id/fork_wrapper">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bootstrapBrand="secondary"
+                    app:bootstrapSize="lg"
+                    app:fontAwesomeIcon="fa_share_alt"
+                    app:roundedCorners="true" />
+
+
+                <TextView
+                    android:id="@+id/share_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/share"
+                    android:layout_alignTop="@id/share"
+                    android:background="@drawable/badge_circle"
+                    android:text="133"
+                    android:textColor="#000"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
 
         </RelativeLayout>
 
@@ -63,11 +116,11 @@
             android:id="@+id/tv_caption"
             android:layout_width="163dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/title_text_size"
-            android:textStyle="normal"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/relativeLayout"
-            android:layout_toStartOf="@+id/relativeLayout" />
+            android:layout_toStartOf="@+id/relativeLayout"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="normal" />
     </RelativeLayout>
 
     <WebView
