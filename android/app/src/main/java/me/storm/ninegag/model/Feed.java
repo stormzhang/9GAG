@@ -1,5 +1,4 @@
 package me.storm.ninegag.model;
-
 import android.database.Cursor;
 import com.google.gson.Gson;
 

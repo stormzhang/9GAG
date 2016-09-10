@@ -98,11 +98,8 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // String imageUrl = mAdapter.getItem(position - gridView.getHeaderViewsCount()).images.large;
                 Intent intent = new Intent(getActivity(), ImageViewActivity.class);
-
                 FeedsAdapter.Holder holder = (FeedsAdapter.Holder) view.getTag();
-
-
-                intent.putExtra(ImageViewActivity.IMAGE_URL, holder.git_id);
+                intent.putExtra("GIST_ID", holder.git_id);
                 startActivity(intent);
             }
         });

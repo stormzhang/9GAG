@@ -27,8 +27,8 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 /**
  * Created by storm on 14-4-15.
  */
-public class ImageViewActivity extends SwipeBackActivity {
-    public static final String IMAGE_URL = "";
+public class ImageViewActivity extends BaseActivity {
+    Feed feed;
 
     @InjectView(R.id.webView)
     WebView webView;
@@ -43,13 +43,14 @@ public class ImageViewActivity extends SwipeBackActivity {
     BootstrapButton eye_button;
 
     @OnClick(R.id.fork_page) void forkOnClick() {
+        setTimeNotification(feed.git_id);
         Log.e("ImageViewActivity","fork_page onclick");
     }
     @OnClick(R.id.share_page) void shareOnClick() {
         Log.e("ImageViewActivity","share_page onclick");
     }
     @OnClick(R.id.eye_page) void eyeOnClick() {
-        Log.e("ImageViewActivity","eye_page onclick");
+        Log.e("ImageViewActivity", "eye_page onclick");
     }
     private PhotoViewAttacher mAttacher;
 
@@ -57,9 +58,9 @@ public class ImageViewActivity extends SwipeBackActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imageview);
         ButterKnife.inject(this);
-        String git_id = getIntent().getStringExtra(IMAGE_URL);
+        String git_id = getIntent().getStringExtra("GIST_ID");
 
-        Feed feed = Feed.getFromCache(git_id);
+        feed = Feed.getFromCache(git_id);
         setTitle(feed.title);
 
         webView.clearCache(true);
