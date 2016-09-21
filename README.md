@@ -1,4 +1,4 @@
-9GAG-Android (unofficial)
+9GAG-Android (deprecated)
 =====================
 
 ## Android学习之路
