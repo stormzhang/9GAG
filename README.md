@@ -1,4 +1,5 @@
-9GAG-Android (deprecated)
+﻿9GAG-Android (deprecated)
+test commit
 =====================
 
 ## Android学习之路
@@ -51,6 +52,7 @@ Gradle version 2.2.1
 ## More about me
 
 * [stormzhang](http://stormzhang.com/)
+
 
 License
 ============
