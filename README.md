@@ -52,6 +52,8 @@ Gradle version 2.2.1
 
 * [stormzhang](http://stormzhang.com/)
 
+I am learning git,thank you for your article about git.
+
 License
 ============
 
