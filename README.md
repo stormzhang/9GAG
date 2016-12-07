@@ -1,4 +1,4 @@
-9GAG-Android (deprecated)
+9GAG-Android (deprecated) Fork from stormzhang !
 =====================
 
 ## Android学习之路
