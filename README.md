@@ -1,8 +1,7 @@
 9GAG-Android (deprecated)
 =====================
-
 ## Android学习之路
-
+Hello StormZhang！
 Recommend Blog--[Android学习之路](http://stormzhang.com/android/2014/07/07/learn-android-from-rookie/)
 
 This a powerful REST Client of 9GAG unofficial which uses Android Studio + Gradle, and follows Android Design.
