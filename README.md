@@ -1,5 +1,7 @@
 9GAG-Android (deprecated)
 =====================
+**Forked by Jetta**
+
 
 ## Android学习之路
 
