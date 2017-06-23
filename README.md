@@ -1,6 +1,7 @@
 9GAG-Android (deprecated)
 =====================
 
+## 我的天，纠结了好长时间，原来是markdown编辑器的原因
 ## Android学习之路
 
 Recommend Blog--[Android学习之路](http://stormzhang.com/android/2014/07/07/learn-android-from-rookie/)
