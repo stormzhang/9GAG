@@ -1,6 +1,6 @@
 9GAG-Android (deprecated)
 =====================
-
+##clone by IAKGnaHz at 2018.10.22
 ## Android学习之路
 
 Recommend Blog--[Android学习之路](http://stormzhang.com/android/2014/07/07/learn-android-from-rookie/)
