@@ -7,6 +7,8 @@ Recommend Blog--[Android学习之路](http://stormzhang.com/android/2014/07/07/l
 
 This a powerful REST Client of 9GAG unofficial which uses Android Studio + Gradle, and follows Android Design.
 
+## 测试Pull requests用
+
 ## Run Environment
 
 Min SDK verison 4.0+
