@@ -18,3 +18,4 @@
 
 # android-gif-drawable
 # public class pl.droidsonroids.gif.GifIOException{*;}
+Fork from stormzhang!
