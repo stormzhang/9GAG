@@ -1,7 +1,7 @@
 9GAG-Android (deprecated)
 =====================
 
-## Android学习之路
+## Android amazing Project
 
 Recommend Blog--[Android学习之路](http://stormzhang.com/android/2014/07/07/learn-android-from-rookie/)
 
