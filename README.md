@@ -1,67 +1,82 @@
-# 9GAG-Android (deprecated)
+# 9GAG for Android
 
-## Android学习之路
+> **⚠️ This project is no longer maintained.** It was built in 2014 as a learning project to demonstrate Android development best practices of that era. The code and dependencies are outdated, but the project remains available for reference.
 
-~~Recommend Blog--[Android学习之路](http://stormzhang.com/android/2014/07/07/learn-android-from-rookie/)~~（链接已失效）
+[中文版](README_CN.md)
 
-This a powerful REST Client of 9GAG unofficial which uses Android Studio + Gradle, and follows Android Design.
+An unofficial Android client for [9GAG](https://9gag.com), built with Android Studio + Gradle, following Material Design guidelines.
 
-## Run Environment
+## Screenshots
 
-Min SDK version 4.0+
+<img src="http://ww4.sinaimg.cn/mw1024/af63c0e3gw1eg8ahf4b1yj21kw0szqc8.jpg" width="600"/>
 
-Android Studio version 1.0 final
+## Features
 
-Gradle version 2.2.1
+- 9GAG feeds browsing with card-style layout
+- Swipe-back gesture navigation
+- Image detail view with zoom support
+- Navigation drawer with category filtering
+- Local data caching with SQLite
+- Shimmer loading animation
 
-## Preview
+## Project Structure
 
-![9GAG](http://ww4.sinaimg.cn/mw1024/af63c0e3gw1eg8ahf4b1yj21kw0szqc8.jpg)
+```
+app/src/main/java/me/storm/ninegag/
+├── api/          # Network requests (Volley)
+├── dao/          # Data access layer (SQLite)
+├── data/         # Data sources
+├── model/        # Data models (Feed, Category)
+├── ui/           # Activities, Fragments & Adapters
+├── util/         # Utilities (cache, bitmap, blur, etc.)
+├── view/         # Custom views (SwipeBack)
+└── App.java      # Application entry
+```
 
-[Download Demo](https://github.com/stormzhang/9GAG/releases/download/v1.0.0/9GAG_v1.0.0.apk)
+## Tech Stack
 
-## Open source projects
+| Category | Library |
+|----------|---------|
+| Network | [Volley](https://github.com/google/volley), [OkHttp](https://github.com/square/okhttp) |
+| Image Loading | [Glide](https://github.com/bumptech/glide) |
+| View Binding | [ButterKnife](https://github.com/JakeWharton/butterknife) |
+| UI Components | [FoldableLayout](https://github.com/alexvasilkov/FoldableLayout), [AndroidStaggeredGrid](https://github.com/etsy/AndroidStaggeredGrid), [Shimmer](https://github.com/RomainPiel/Shimmer-android) |
+| Image Viewer | [PhotoView](https://github.com/Baseflow/PhotoView) |
+| Memory Leak Detection | [LeakCanary](https://github.com/square/leakcanary) |
 
-* [Volley](https://android.googlesource.com/platform/frameworks/volley)
+## Build
 
-* [ButterKnife](http://jakewharton.github.io/butterknife/) (deprecated, 推荐使用 View Binding)
+```bash
+git clone https://github.com/stormzhang/9GAG.git
+```
 
-* [UniversalImageLoader](https://github.com/nostra13/Android-Universal-Image-Loader) (deprecated)
+Open the project in Android Studio and sync Gradle.
 
-* [ListViewAnimations](https://github.com/nhaarman/ListViewAnimations) (archived, 推荐使用 RecyclerView)
+> **Note:** This project uses Gradle 2.2.1 and Android Gradle Plugin 1.5.0. You may need an older version of Android Studio or manual Gradle configuration to build successfully.
 
-* [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids) (archived)
+## Requirements
 
-* [PhotoView](https://github.com/chrisbanes/PhotoView)
+- Min SDK: Android 4.0 (API 14)
+- Target SDK: Android 5.1 (API 22)
 
-* [FoldingLayout](https://github.com/tibi1712/Folding-Android)
+## Author
 
-* [ProgressWheel](https://github.com/Todd-Davies/ProgressWheel) (unmaintained)
-
-* [AndroidStaggeredGrid](https://github.com/etsy/AndroidStaggeredGrid) (archived, 推荐使用 RecyclerView + StaggeredGridLayoutManager)
-
-* [BlurEffectForAndroidDesign](https://github.com/PomepuyN/BlurEffectForAndroidDesign)
-
-* [Shimmer-android](https://github.com/RomainPiel/Shimmer-android) (archived)
-
-* [Titanic](https://github.com/RomainPiel/Titanic) (archived)
-
-## More about me
-
-* [stormzhang on GitHub](https://github.com/stormzhang)
+**stormzhang** — [@stormzhang on GitHub](https://github.com/stormzhang)
 
 ## License
 
-    Copyright 2014 stormzhang
+```
+Copyright 2014 stormzhang
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-     http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
