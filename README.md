@@ -1,15 +1,14 @@
-9GAG-Android (deprecated)
-=====================
+# 9GAG-Android (deprecated)
 
 ## Android学习之路
 
-Recommend Blog--[Android学习之路](http://stormzhang.com/android/2014/07/07/learn-android-from-rookie/)
+~~Recommend Blog--[Android学习之路](http://stormzhang.com/android/2014/07/07/learn-android-from-rookie/)~~（链接已失效）
 
 This a powerful REST Client of 9GAG unofficial which uses Android Studio + Gradle, and follows Android Design.
 
 ## Run Environment
 
-Min SDK verison 4.0+
+Min SDK version 4.0+
 
 Android Studio version 1.0 final
 
@@ -21,50 +20,48 @@ Gradle version 2.2.1
 
 [Download Demo](https://github.com/stormzhang/9GAG/releases/download/v1.0.0/9GAG_v1.0.0.apk)
 
-
 ## Open source projects
 
 * [Volley](https://android.googlesource.com/platform/frameworks/volley)
 
-* [ButterKnife](http://jakewharton.github.io/butterknife/)
+* [ButterKnife](http://jakewharton.github.io/butterknife/) (deprecated, 推荐使用 View Binding)
 
-* [UniversalImageLoader](https://github.com/nostra13/Android-Universal-Image-Loader)
+* [UniversalImageLoader](https://github.com/nostra13/Android-Universal-Image-Loader) (deprecated)
 
-* [ListViewAnimations](https://github.com/nhaarman/ListViewAnimations)
+* [ListViewAnimations](https://github.com/nhaarman/ListViewAnimations) (archived, 推荐使用 RecyclerView)
 
-* [NineOldAndroid](http://nineoldandroids.com/)
+* [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids) (archived)
 
 * [PhotoView](https://github.com/chrisbanes/PhotoView)
 
 * [FoldingLayout](https://github.com/tibi1712/Folding-Android)
 
-* [ProgressWheel](https://github.com/Todd-Davies/ProgressWheel)
+* [ProgressWheel](https://github.com/Todd-Davies/ProgressWheel) (unmaintained)
 
-* [AndroidStaggeredGrid](https://github.com/etsy/AndroidStaggeredGrid)
+* [AndroidStaggeredGrid](https://github.com/etsy/AndroidStaggeredGrid) (archived, 推荐使用 RecyclerView + StaggeredGridLayoutManager)
 
 * [BlurEffectForAndroidDesign](https://github.com/PomepuyN/BlurEffectForAndroidDesign)
 
-* [Shimmer-android](https://github.com/RomainPiel/Shimmer-android)
+* [Shimmer-android](https://github.com/RomainPiel/Shimmer-android) (archived)
 
-* [Titanic](https://github.com/RomainPiel/Titanic)
+* [Titanic](https://github.com/RomainPiel/Titanic) (archived)
 
 ## More about me
 
-* [stormzhang](http://stormzhang.com/)
+* [stormzhang on GitHub](https://github.com/stormzhang)
 
-License
-============
+## License
 
     Copyright 2014 stormzhang
 
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
      http://www.apache.org/licenses/LICENSE-2.0
 
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
