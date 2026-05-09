@@ -13,7 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -93,12 +92,11 @@ public class FeedsFragment extends BaseFragment implements LoaderManager.LoaderC
             }
         });
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mAdapter.setOnListItemClickListener(new FeedsAdapter.OnListItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String imageUrl = mAdapter.getItem(position - gridView.getHeaderViewsCount()).images.large;
+            public void onListItemClick(String imgUrl) {
                 Intent intent = new Intent(getActivity(), ImageViewActivity.class);
-                intent.putExtra(ImageViewActivity.IMAGE_URL, imageUrl);
+                intent.putExtra(ImageViewActivity.IMAGE_URL, imgUrl);
                 startActivity(intent);
             }
         });
